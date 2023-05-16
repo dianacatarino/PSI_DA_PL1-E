@@ -1,0 +1,12 @@
+C:\Users\Didi_\source\repos\Projeto_DA\Projeto_DA\bin\Debug\Projeto_DA.exe.config
+C:\Users\Didi_\source\repos\Projeto_DA\Projeto_DA\bin\Debug\Projeto_DA.exe
+C:\Users\Didi_\source\repos\Projeto_DA\Projeto_DA\bin\Debug\Projeto_DA.pdb
+C:\Users\Didi_\source\repos\Projeto_DA\Projeto_DA\obj\Debug\Projeto_DA.csproj.AssemblyReference.cache
+C:\Users\Didi_\source\repos\Projeto_DA\Projeto_DA\obj\Debug\Projeto_DA.csproj.SuggestedBindingRedirects.cache
+C:\Users\Didi_\source\repos\Projeto_DA\Projeto_DA\obj\Debug\Projeto_DA.Atendimento.resources
+C:\Users\Didi_\source\repos\Projeto_DA\Projeto_DA\obj\Debug\Projeto_DA.Menu.resources
+C:\Users\Didi_\source\repos\Projeto_DA\Projeto_DA\obj\Debug\Projeto_DA.Properties.Resources.resources
+C:\Users\Didi_\source\repos\Projeto_DA\Projeto_DA\obj\Debug\Projeto_DA.csproj.GenerateResource.cache
+C:\Users\Didi_\source\repos\Projeto_DA\Projeto_DA\obj\Debug\Projeto_DA.csproj.CoreCompileInputs.cache
+C:\Users\Didi_\source\repos\Projeto_DA\Projeto_DA\obj\Debug\Projeto_DA.exe
+C:\Users\Didi_\source\repos\Projeto_DA\Projeto_DA\obj\Debug\Projeto_DA.pdb
