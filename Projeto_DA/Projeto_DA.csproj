@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -12,6 +13,8 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,7 +36,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,58 +56,77 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Atendimento.cs">
+    <Compile Include="Controladores\BilheteController.cs" />
+    <Compile Include="Controladores\CategoriaController.cs" />
+    <Compile Include="Controladores\CinemaController.cs" />
+    <Compile Include="Controladores\ClienteController.cs" />
+    <Compile Include="Controladores\FilmeController.cs" />
+    <Compile Include="Controladores\FuncionarioController.cs" />
+    <Compile Include="Controladores\PessoaController.cs" />
+    <Compile Include="Controladores\SalaController.cs" />
+    <Compile Include="Controladores\SessaoController.cs" />
+    <Compile Include="Modelos\Bilhete.cs" />
+    <Compile Include="Modelos\Categoria.cs" />
+    <Compile Include="Modelos\Cinema.cs" />
+    <Compile Include="Modelos\ApplicationContext.cs" />
+    <Compile Include="Modelos\Cliente.cs" />
+    <Compile Include="Modelos\Filme.cs" />
+    <Compile Include="Modelos\Funcionario.cs" />
+    <Compile Include="Modelos\Pessoa.cs" />
+    <Compile Include="Modelos\Sala.cs" />
+    <Compile Include="Modelos\Sessao.cs" />
+    <Compile Include="Vistas\AtendimentoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Atendimento.Designer.cs">
-      <DependentUpon>Atendimento.cs</DependentUpon>
+    <Compile Include="Vistas\AtendimentoForm.Designer.cs">
+      <DependentUpon>AtendimentoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cinema.cs">
+    <Compile Include="Vistas\CinemaForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Cinema.Designer.cs">
-      <DependentUpon>Cinema.cs</DependentUpon>
+    <Compile Include="Vistas\CinemaForm.Designer.cs">
+      <DependentUpon>CinemaForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Clientes.cs">
+    <Compile Include="Vistas\ClientesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Clientes.Designer.cs">
-      <DependentUpon>Clientes.cs</DependentUpon>
+    <Compile Include="Vistas\ClientesForm.Designer.cs">
+      <DependentUpon>ClientesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Filmes.cs">
+    <Compile Include="Vistas\FilmesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Filmes.Designer.cs">
-      <DependentUpon>Filmes.cs</DependentUpon>
+    <Compile Include="Vistas\FilmesForm.Designer.cs">
+      <DependentUpon>FilmesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Menu.cs">
+    <Compile Include="Vistas\MenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Menu.Designer.cs">
-      <DependentUpon>Menu.cs</DependentUpon>
+    <Compile Include="Vistas\MenuForm.Designer.cs">
+      <DependentUpon>MenuForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sessões.cs">
+    <Compile Include="Vistas\SessoesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sessões.Designer.cs">
-      <DependentUpon>Sessões.cs</DependentUpon>
+    <Compile Include="Vistas\SessoesForm.Designer.cs">
+      <DependentUpon>SessoesForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Atendimento.resx">
-      <DependentUpon>Atendimento.cs</DependentUpon>
+    <EmbeddedResource Include="Vistas\AtendimentoForm.resx">
+      <DependentUpon>AtendimentoForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Cinema.resx">
-      <DependentUpon>Cinema.cs</DependentUpon>
+    <EmbeddedResource Include="Vistas\CinemaForm.resx">
+      <DependentUpon>CinemaForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Clientes.resx">
-      <DependentUpon>Clientes.cs</DependentUpon>
+    <EmbeddedResource Include="Vistas\ClientesForm.resx">
+      <DependentUpon>ClientesForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Filmes.resx">
-      <DependentUpon>Filmes.cs</DependentUpon>
+    <EmbeddedResource Include="Vistas\FilmesForm.resx">
+      <DependentUpon>FilmesForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Menu.resx">
-      <DependentUpon>Menu.cs</DependentUpon>
+    <EmbeddedResource Include="Vistas\MenuForm.resx">
+      <DependentUpon>MenuForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -108,9 +137,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Sessões.resx">
-      <DependentUpon>Sessões.cs</DependentUpon>
+    <EmbeddedResource Include="Vistas\SessoesForm.resx">
+      <DependentUpon>SessoesForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -124,5 +154,14 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
 </Project>
