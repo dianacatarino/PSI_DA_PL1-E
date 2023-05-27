@@ -35,6 +35,8 @@ namespace Projeto_DA
             categoria.Nome = textBoxCategoria.Text;
             Boolean Ativo = Boolean.Parse(checkBoxAtivo.Text);
             filme.Ativo = Ativo;
+
+            listBoxFilmes.Items.Add(filme);
         }
 
         private void listBoxFilmes_SelectedIndexChanged(object sender, EventArgs e)
@@ -48,7 +50,7 @@ namespace Projeto_DA
             Categoria categoria = (Categoria)listBoxFilmes.SelectedItem;
 
             textBoxNomeFilme.Text = filme.Nome;
-            textBoxDuracao.Text = filme.Duracao;
+            textBoxDuracao.Text = filme.Duracao.ToString();
             textBoxCategoria.Text = categoria.Nome;
             checkBoxAtivo.Checked = filme.Ativo;
         }

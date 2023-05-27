@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projeto_DA.Vistas;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -40,16 +41,16 @@ namespace Projeto_DA
 
         private void btClientes_Click(object sender, EventArgs e)
         {
-            AtendimentoForm atendimentoform = new AtendimentoForm();
+            ClientesForm clientesForm = new ClientesForm ();
             Hide();
-            atendimentoform.ShowDialog();
+            clientesForm.ShowDialog();
         }
 
         private void btFuncionarios_Click(object sender, EventArgs e)
         {
-            ClientesForm clientesform = new ClientesForm();
+            FuncionariosForm funcionariosform = new FuncionariosForm();
             Hide();
-            clientesform.ShowDialog();
+            funcionariosform.ShowDialog();
         }
     }
 }

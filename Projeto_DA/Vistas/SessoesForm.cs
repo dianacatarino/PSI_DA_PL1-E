@@ -51,8 +51,8 @@ namespace Projeto_DA
 
             textBoxFilmeSessoes.Text = filme.Nome;
             textBoxSala.Text = sala.Nome;
-            dateTimePickerInicio.Text = sessao.DataHoraInicio;
-            dateTimePickerFim.Text = sessao.DataHoraFim;
+            dateTimePickerInicio.Text = sessao.DataHoraInicio.ToString();
+            dateTimePickerFim.Text = sessao.DataHoraFim.ToString();
         }
     }
 }

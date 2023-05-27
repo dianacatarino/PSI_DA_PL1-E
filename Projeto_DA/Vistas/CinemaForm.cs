@@ -31,6 +31,22 @@ namespace Projeto_DA
             cinema.Nome = textBoxNomeCinema.Text;
             cinema.Morada = textBoxMoradaCinema.Text;
             cinema.Email = textBoxEmailCinema.Text;
+
+            listBoxCinema.Items.Add(cinema);
+        }
+
+        private void listBoxCinema_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBoxCinema.SelectedIndex == null)
+            {
+                return;
+            }
+
+            Cinema cinema = (Cinema)listBoxCinema.SelectedItem;
+
+            textBoxNomeCinema.Text = cinema.Nome;
+            textBoxMoradaCinema.Text = cinema.Morada;
+            textBoxEmailCinema.Text = cinema.Email;
         }
     }
 }

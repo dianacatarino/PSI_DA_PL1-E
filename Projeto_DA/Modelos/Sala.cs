@@ -7,16 +7,19 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace Projeto_DA.Modelos
 {
-    public class Cliente: Pessoa
+    public class Sala
     {
         public int Id { get; set; }
-        public int NumFiscal { get; set; }
+        public string Nome { get; set; }
+        public string Colunas { get; set; }
+        public int Filas { get; set; }
 
-        public List<Bilhete> Bilhetes { get; set; }
+        public Cinema Cinema { get; set; }
+        public List<Sessao> Sessoes { get; set; }   
 
         public override string ToString()
         {
-            return $"Nome: {base.Nome}, Morada: {base.Morada}, Nif: {NumFiscal}";
+            return $"Nome: {Nome}, Colunas: {Colunas}, Filas: {Filas}";
         }
     }
 }

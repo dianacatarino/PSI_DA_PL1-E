@@ -8,8 +8,12 @@ namespace Projeto_DA.Modelos
 {
     public class Bilhete
     {
-        int Id { get; set; }
-        string Lugar { get; set; }
-        string Estado { get; set; }
+        public int Id { get; set; }
+        public string Lugar { get; set; }
+        public string Estado { get; set; }
+
+        public Sessao Sessao { get; set; }
+        public Cliente Cliente { get; set; }
+        public Funcionario Funcionario { get; set; }
     }
 }

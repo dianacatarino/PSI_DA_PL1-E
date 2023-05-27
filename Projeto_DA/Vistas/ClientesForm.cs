@@ -27,10 +27,9 @@ namespace Projeto_DA
 
         private void btAdicionarCliente_Click(object sender, EventArgs e)
         {
-            Pessoa pessoa = new Pessoa();
             Cliente cliente = new Cliente();
-            pessoa.Nome = textBoxNome.Text;
-            pessoa.Morada = textBoxMorada.Text;
+            cliente.Nome = textBoxNome.Text;
+            cliente.Morada = textBoxMorada.Text;
             int NumFiscal = int.Parse(textBoxNif.Text);
             cliente.NumFiscal = NumFiscal;
 
@@ -44,13 +43,12 @@ namespace Projeto_DA
                 return;
             }
 
-            Pessoa pessoa = (Pessoa)listBoxClientes.SelectedItem;
             Cliente cliente = (Cliente)listBoxClientes.SelectedItem;
 
-            textBoxNome.Text = pessoa.Nome;
-            textBoxMorada.Text = pessoa.Morada;
+            textBoxNome.Text = cliente.Nome;
+            textBoxMorada.Text = cliente.Morada;
             int NumFiscal = cliente.NumFiscal;
-            textBoxNif.Text = NumFiscal;
+            textBoxNif.Text = NumFiscal.ToString();
         }
     }
 }

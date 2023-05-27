@@ -99,6 +99,12 @@
     <Compile Include="Vistas\FilmesForm.Designer.cs">
       <DependentUpon>FilmesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\FuncionariosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\FuncionariosForm.Designer.cs">
+      <DependentUpon>FuncionariosForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\MenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\FilmesForm.resx">
       <DependentUpon>FilmesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\FuncionariosForm.resx">
+      <DependentUpon>FuncionariosForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\MenuForm.resx">
       <DependentUpon>MenuForm.cs</DependentUpon>

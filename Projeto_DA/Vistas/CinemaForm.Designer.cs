@@ -47,7 +47,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(352, 102);
+            this.label1.Location = new System.Drawing.Point(483, 102);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(161, 16);
             this.label1.TabIndex = 0;
@@ -55,21 +55,21 @@
             // 
             // textBoxNomeCinema
             // 
-            this.textBoxNomeCinema.Location = new System.Drawing.Point(410, 146);
+            this.textBoxNomeCinema.Location = new System.Drawing.Point(496, 146);
             this.textBoxNomeCinema.Name = "textBoxNomeCinema";
             this.textBoxNomeCinema.Size = new System.Drawing.Size(165, 22);
             this.textBoxNomeCinema.TabIndex = 1;
             // 
             // textBoxMoradaCinema
             // 
-            this.textBoxMoradaCinema.Location = new System.Drawing.Point(410, 184);
+            this.textBoxMoradaCinema.Location = new System.Drawing.Point(496, 184);
             this.textBoxMoradaCinema.Name = "textBoxMoradaCinema";
             this.textBoxMoradaCinema.Size = new System.Drawing.Size(165, 22);
             this.textBoxMoradaCinema.TabIndex = 2;
             // 
             // textBoxEmailCinema
             // 
-            this.textBoxEmailCinema.Location = new System.Drawing.Point(410, 225);
+            this.textBoxEmailCinema.Location = new System.Drawing.Point(496, 225);
             this.textBoxEmailCinema.Name = "textBoxEmailCinema";
             this.textBoxEmailCinema.Size = new System.Drawing.Size(165, 22);
             this.textBoxEmailCinema.TabIndex = 3;
@@ -77,7 +77,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(352, 151);
+            this.label2.Location = new System.Drawing.Point(438, 151);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 16);
             this.label2.TabIndex = 4;
@@ -86,7 +86,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(352, 190);
+            this.label3.Location = new System.Drawing.Point(438, 190);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(57, 16);
             this.label3.TabIndex = 5;
@@ -95,7 +95,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(355, 231);
+            this.label4.Location = new System.Drawing.Point(441, 231);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 16);
             this.label4.TabIndex = 6;
@@ -103,9 +103,9 @@
             // 
             // btAdicionarCinema
             // 
-            this.btAdicionarCinema.Location = new System.Drawing.Point(410, 277);
+            this.btAdicionarCinema.Location = new System.Drawing.Point(486, 277);
             this.btAdicionarCinema.Name = "btAdicionarCinema";
-            this.btAdicionarCinema.Size = new System.Drawing.Size(75, 23);
+            this.btAdicionarCinema.Size = new System.Drawing.Size(85, 23);
             this.btAdicionarCinema.TabIndex = 7;
             this.btAdicionarCinema.Text = "Adicionar";
             this.btAdicionarCinema.UseVisualStyleBackColor = true;
@@ -113,7 +113,7 @@
             // 
             // btAlterarCinema
             // 
-            this.btAlterarCinema.Location = new System.Drawing.Point(500, 277);
+            this.btAlterarCinema.Location = new System.Drawing.Point(586, 277);
             this.btAlterarCinema.Name = "btAlterarCinema";
             this.btAlterarCinema.Size = new System.Drawing.Size(75, 23);
             this.btAlterarCinema.TabIndex = 8;
@@ -124,10 +124,11 @@
             // 
             this.listBoxCinema.FormattingEnabled = true;
             this.listBoxCinema.ItemHeight = 16;
-            this.listBoxCinema.Location = new System.Drawing.Point(168, 146);
+            this.listBoxCinema.Location = new System.Drawing.Point(154, 102);
             this.listBoxCinema.Name = "listBoxCinema";
-            this.listBoxCinema.Size = new System.Drawing.Size(149, 116);
+            this.listBoxCinema.Size = new System.Drawing.Size(278, 228);
             this.listBoxCinema.TabIndex = 9;
+            this.listBoxCinema.SelectedIndexChanged += new System.EventHandler(this.listBoxCinema_SelectedIndexChanged);
             // 
             // menuStrip1
             // 
@@ -151,7 +152,7 @@
             // voltarToolStripMenuItem
             // 
             this.voltarToolStripMenuItem.Name = "voltarToolStripMenuItem";
-            this.voltarToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.voltarToolStripMenuItem.Size = new System.Drawing.Size(131, 26);
             this.voltarToolStripMenuItem.Text = "Voltar";
             this.voltarToolStripMenuItem.Click += new System.EventHandler(this.voltarToolStripMenuItem_Click);
             // 
