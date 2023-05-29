@@ -61,7 +61,7 @@
             this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.voltarToolStripMenuItem});
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
-            this.menuToolStripMenuItem.Size = new System.Drawing.Size(60, 26);
+            this.menuToolStripMenuItem.Size = new System.Drawing.Size(60, 24);
             this.menuToolStripMenuItem.Text = "Menu";
             // 
             // voltarToolStripMenuItem
@@ -75,15 +75,15 @@
             // 
             this.listBoxSessoes.FormattingEnabled = true;
             this.listBoxSessoes.ItemHeight = 16;
-            this.listBoxSessoes.Location = new System.Drawing.Point(115, 135);
+            this.listBoxSessoes.Location = new System.Drawing.Point(108, 61);
             this.listBoxSessoes.Name = "listBoxSessoes";
-            this.listBoxSessoes.Size = new System.Drawing.Size(201, 196);
+            this.listBoxSessoes.Size = new System.Drawing.Size(330, 308);
             this.listBoxSessoes.TabIndex = 19;
             this.listBoxSessoes.SelectedIndexChanged += new System.EventHandler(this.listBoxSessoes_SelectedIndexChanged);
             // 
             // btAlterarSessoes
             // 
-            this.btAlterarSessoes.Location = new System.Drawing.Point(480, 308);
+            this.btAlterarSessoes.Location = new System.Drawing.Point(601, 311);
             this.btAlterarSessoes.Name = "btAlterarSessoes";
             this.btAlterarSessoes.Size = new System.Drawing.Size(75, 23);
             this.btAlterarSessoes.TabIndex = 18;
@@ -92,7 +92,7 @@
             // 
             // btAdicionarSessoes
             // 
-            this.btAdicionarSessoes.Location = new System.Drawing.Point(338, 308);
+            this.btAdicionarSessoes.Location = new System.Drawing.Point(459, 311);
             this.btAdicionarSessoes.Name = "btAdicionarSessoes";
             this.btAdicionarSessoes.Size = new System.Drawing.Size(75, 23);
             this.btAdicionarSessoes.TabIndex = 17;
@@ -103,7 +103,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(338, 224);
+            this.label4.Location = new System.Drawing.Point(459, 227);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(83, 16);
             this.label4.TabIndex = 16;
@@ -112,7 +112,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(335, 183);
+            this.label3.Location = new System.Drawing.Point(456, 186);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 16);
             this.label3.TabIndex = 15;
@@ -121,7 +121,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(335, 144);
+            this.label2.Location = new System.Drawing.Point(456, 147);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 16);
             this.label2.TabIndex = 14;
@@ -129,14 +129,14 @@
             // 
             // textBoxSala
             // 
-            this.textBoxSala.Location = new System.Drawing.Point(393, 177);
+            this.textBoxSala.Location = new System.Drawing.Point(514, 180);
             this.textBoxSala.Name = "textBoxSala";
             this.textBoxSala.Size = new System.Drawing.Size(165, 22);
             this.textBoxSala.TabIndex = 12;
             // 
             // textBoxFilmeSessoes
             // 
-            this.textBoxFilmeSessoes.Location = new System.Drawing.Point(393, 139);
+            this.textBoxFilmeSessoes.Location = new System.Drawing.Point(514, 142);
             this.textBoxFilmeSessoes.Name = "textBoxFilmeSessoes";
             this.textBoxFilmeSessoes.Size = new System.Drawing.Size(165, 22);
             this.textBoxFilmeSessoes.TabIndex = 11;
@@ -144,7 +144,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(335, 95);
+            this.label1.Location = new System.Drawing.Point(456, 98);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(169, 16);
             this.label1.TabIndex = 10;
@@ -152,14 +152,14 @@
             // 
             // dateTimePickerInicio
             // 
-            this.dateTimePickerInicio.Location = new System.Drawing.Point(338, 243);
+            this.dateTimePickerInicio.Location = new System.Drawing.Point(459, 246);
             this.dateTimePickerInicio.Name = "dateTimePickerInicio";
             this.dateTimePickerInicio.Size = new System.Drawing.Size(217, 22);
             this.dateTimePickerInicio.TabIndex = 20;
             // 
             // dateTimePickerFim
             // 
-            this.dateTimePickerFim.Location = new System.Drawing.Point(338, 271);
+            this.dateTimePickerFim.Location = new System.Drawing.Point(459, 274);
             this.dateTimePickerFim.Name = "dateTimePickerFim";
             this.dateTimePickerFim.Size = new System.Drawing.Size(217, 22);
             this.dateTimePickerFim.TabIndex = 21;

@@ -31,3 +31,4 @@ E:\PSI\2º Semestre\DA\Projeto\Projeto_DA\Projeto_DA\bin\Debug\EntityFramework.S
 E:\PSI\2º Semestre\DA\Projeto\Projeto_DA\Projeto_DA\bin\Debug\EntityFramework.xml
 E:\PSI\2º Semestre\DA\Projeto\Projeto_DA\Projeto_DA\bin\Debug\EntityFramework.SqlServer.xml
 E:\PSI\2º Semestre\DA\Projeto\Projeto_DA\Projeto_DA\obj\Debug\Projeto_DA.csproj.CopyComplete
+E:\PSI\2º Semestre\DA\Projeto\Projeto_DA\Projeto_DA\obj\Debug\Projeto_DA.Vistas.FuncionariosForm.resources

@@ -1,4 +1,5 @@
-﻿using Projeto_DA.Modelos;
+﻿using Projeto_DA.Controladores;
+using Projeto_DA.Modelos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,16 +28,16 @@ namespace Projeto_DA
 
         private void btAdicionarFilme_Click(object sender, EventArgs e)
         {
-            Filme filme = new Filme();
-            Categoria categoria = new Categoria();
-            filme.Nome = textBoxNomeFilme.Text;
-            TimeSpan Duracao = TimeSpan.Parse(textBoxDuracao.Text);
-            filme.Duracao = Duracao;
-            categoria.Nome = textBoxCategoria.Text;
-            Boolean Ativo = Boolean.Parse(checkBoxAtivo.Text);
-            filme.Ativo = Ativo;
+            FilmeController.AdicionarFilme(textBoxNomeFilme.Text, TimeSpan.Parse(textBoxDuracao.Text), 
+                textBoxCategoria.Text, Boolean.Parse(checkBoxAtivo.Text));
+            FilmesRefresh();
+        }
 
-            listBoxFilmes.Items.Add(filme);
+        private void FilmesRefresh()
+        {
+            var filme = FilmeController.GetFilmes();
+            listBoxFilmes.DataSource = null;
+            listBoxFilmes.DataSource = filme;
         }
 
         private void listBoxFilmes_SelectedIndexChanged(object sender, EventArgs e)

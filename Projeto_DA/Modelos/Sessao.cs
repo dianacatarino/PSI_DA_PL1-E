@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Projeto_DA.Modelos
 {
-    public class Sessao
+    public class Sessao: Filme
     {
         public int Id { get; set; }
         public DateTime DataHoraInicio { get; set; }

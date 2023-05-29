@@ -1,4 +1,5 @@
-﻿using Projeto_DA.Modelos;
+﻿using Projeto_DA.Controladores;
+using Projeto_DA.Modelos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,13 +28,16 @@ namespace Projeto_DA
 
         private void btAdicionarCliente_Click(object sender, EventArgs e)
         {
-            Cliente cliente = new Cliente();
-            cliente.Nome = textBoxNome.Text;
-            cliente.Morada = textBoxMorada.Text;
-            int NumFiscal = int.Parse(textBoxNif.Text);
-            cliente.NumFiscal = NumFiscal;
 
-            listBoxClientes.Items.Add(cliente);
+            ClienteController.AdicionarCliente(textBoxNome.Text, textBoxMorada.Text, int.Parse(textBoxNif.Text));
+            ClientesRefresh();
+        }
+
+        private void ClientesRefresh()
+        {
+            var cliente = ClienteController.GetClientes();
+            listBoxClientes.DataSource = null;
+            listBoxClientes.DataSource = cliente;
         }
 
         private void listBoxClientes_SelectedIndexChanged(object sender, EventArgs e)
@@ -49,6 +53,26 @@ namespace Projeto_DA
             textBoxMorada.Text = cliente.Morada;
             int NumFiscal = cliente.NumFiscal;
             textBoxNif.Text = NumFiscal.ToString();
+        }
+
+        private void btAlterarCliente_Click(object sender, EventArgs e)
+        {
+            Cliente cliente = (Cliente)listBoxClientes.SelectedItem; 
+
+            cliente.Nome = textBoxNome.Text;
+            cliente.Morada = textBoxMorada.Text;
+            int NumFiscal = int.Parse(textBoxNif.Text);
+            cliente.NumFiscal = NumFiscal;
+
+            try
+            {
+                var db = new Modelos.ApplicationContext();
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
     }
 }

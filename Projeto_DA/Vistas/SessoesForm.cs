@@ -1,4 +1,5 @@
-﻿using Projeto_DA.Modelos;
+﻿using Projeto_DA.Controladores;
+using Projeto_DA.Modelos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,15 +28,16 @@ namespace Projeto_DA
 
         private void btAdicionarSessoes_Click(object sender, EventArgs e)
         {
-            Filme filme = new Filme();
-            Sala sala = new Sala();
-            Sessao sessao = new Sessao();
-            filme.Nome = textBoxFilmeSessoes.Text;
-            sala.Nome = textBoxSala.Text;
-            DateTime DataHoraInicio = DateTime.Parse(dateTimePickerInicio.Text);
-            sessao.DataHoraInicio = DataHoraInicio;
-            DateTime DataHoraFim = DateTime.Parse(dateTimePickerFim.Text);
-            sessao.DataHoraFim = DataHoraFim;
+            SessaoController.AdicionarSessao(textBoxFilmeSessoes.Text, textBoxSala.Text,
+                DateTime.Parse(dateTimePickerInicio.Text), DateTime.Parse(dateTimePickerFim.Text));
+            SessoesRefresh();
+        }
+
+        private void SessoesRefresh()
+        {
+            var sessao = SessaoController.GetSessoes();
+            listBoxSessoes.DataSource = null;
+            listBoxSessoes.DataSource = sessao;
         }
 
         private void listBoxSessoes_SelectedIndexChanged(object sender, EventArgs e)

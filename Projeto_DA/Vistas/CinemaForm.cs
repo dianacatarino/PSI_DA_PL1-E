@@ -1,4 +1,5 @@
 ﻿using Projeto_DA.Modelos;
+using Projeto_DA.Controladores;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,12 +28,15 @@ namespace Projeto_DA
 
         private void btAdicionarCinema_Click(object sender, EventArgs e)
         {
-            Cinema cinema = new Cinema();
-            cinema.Nome = textBoxNomeCinema.Text;
-            cinema.Morada = textBoxMoradaCinema.Text;
-            cinema.Email = textBoxEmailCinema.Text;
+            CinemaController.AdicionarCinema(textBoxNomeCinema.Text,textBoxMoradaCinema.Text,textBoxEmailCinema.Text);
+            CinemaRefresh();
+        }
 
-            listBoxCinema.Items.Add(cinema);
+        private void CinemaRefresh()
+        {
+            var cinema = CinemaController.GetCinemas();
+            listBoxCinema.DataSource = null;
+            listBoxCinema.DataSource = cinema;
         }
 
         private void listBoxCinema_SelectedIndexChanged(object sender, EventArgs e)
@@ -47,6 +51,19 @@ namespace Projeto_DA
             textBoxNomeCinema.Text = cinema.Nome;
             textBoxMoradaCinema.Text = cinema.Morada;
             textBoxEmailCinema.Text = cinema.Email;
+        }
+
+        private void btAlterarCinema_Click(object sender, EventArgs e)
+        {
+            Cinema cinemaSelecionado = (Cinema)listBoxCinema.SelectedItem;
+
+            string novoNome = textBoxNomeCinema.Text;
+            string novoEmail = textBoxEmailCinema.Text;
+            string novaMorada = textBoxMoradaCinema.Text;
+
+            CinemaController.AlterarCinema(cinemaSelecionado.Id, novoNome, novoEmail, novaMorada);
+
+            CinemaRefresh();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projeto_DA.Controladores;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,20 @@ namespace Projeto_DA.Vistas
         public FuncionariosForm()
         {
             InitializeComponent();
+        }
+
+        private void btAdicionarFuncionario_Click(object sender, EventArgs e)
+        {
+            FuncionarioController.AdicionarFuncionario(textBoxNome.Text, textBoxMorada.Text, 
+                float.Parse(textBoxSalario.Text),textBoxFuncao.Text);
+            FuncionariosRefresh();
+        }
+
+        private void FuncionariosRefresh()
+        {
+            var funcionario = FuncionarioController.GetFuncionarios();
+            listBoxFuncionarios.DataSource = null;
+            listBoxFuncionarios.DataSource = funcionario;
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Projeto_DA.Modelos
 {
-    public class Filme
+    public class Filme: Categoria
     {
         public int Id { get; set; }
         public string Nome { get; set; }

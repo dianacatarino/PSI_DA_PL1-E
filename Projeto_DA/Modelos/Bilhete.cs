@@ -13,7 +13,5 @@ namespace Projeto_DA.Modelos
         public string Estado { get; set; }
 
         public Sessao Sessao { get; set; }
-        public Cliente Cliente { get; set; }
-        public Funcionario Funcionario { get; set; }
     }
 }
