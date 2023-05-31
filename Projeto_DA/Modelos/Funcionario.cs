@@ -16,7 +16,7 @@ namespace Projeto_DA.Modelos
 
         public override string ToString()
         {
-            return $"Nome: {base.Nome}, Morada: {base.Morada}, Salário: {Salario}, Função: {Funcao}";
+            return $"{base.Nome}, {base.Morada}, {Salario}€, {Funcao}";
         }
     }
 }

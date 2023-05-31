@@ -11,12 +11,18 @@ namespace Projeto_DA.Controladores
     {
         public static void AdicionarFilme(string nome, TimeSpan duracao, string categoria, Boolean ativo)
         {
-            /*using (var db = new ApplicationContext())
+            using (var db = new ApplicationContext())
             {
-                var filme = new Filme { Nome = nome, Duracao = duracao, Categoria = categoria, Ativo = ativo };
+				var categoriaObj = db.Categorias.FirstOrDefault(c => c.Nome == categoria);
+                if (categoriaObj != null)
+                {
+                    return;
+                }
+
+				var filme = new Filme { Nome = nome, Duracao = duracao, Categoria = categoria, Ativo = ativo };
                 db.Filmes.Add(filme);
                 db.SaveChanges();
-            }*/
+            }
         }
 
         public static List<Filme> GetFilmes()

@@ -26,5 +26,21 @@ namespace Projeto_DA.Controladores
                 return db.Funcionarios.ToList();
             }
         }
+
+        public static void AlterarFuncionario(int funcionarioId, string novoNome, string novaMorada, float novoSalario, string novaFuncao)
+        {
+			using (var db = new ApplicationContext())
+            {
+				var funcionario = db.Funcionarios.Find(funcionarioId);
+				if (funcionario != null)
+                {
+					funcionario.Nome = novoNome;
+					funcionario.Morada = novaMorada;
+					funcionario.Salario = novoSalario;
+					funcionario.Funcao = novaFuncao;
+					db.SaveChanges();
+				}
+			}
+		}   
     }
 }

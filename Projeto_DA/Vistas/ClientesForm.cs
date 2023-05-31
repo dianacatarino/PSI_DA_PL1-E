@@ -14,10 +14,14 @@ namespace Projeto_DA
 {
     public partial class ClientesForm : Form
     {
-        public ClientesForm()
+		private Projeto_DA.Modelos.ApplicationContext db;
+
+		public ClientesForm()
         {
             InitializeComponent();
-        }
+			db = new Projeto_DA.Modelos.ApplicationContext();
+			ClientesRefresh();
+		}
 
         private void voltarToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -42,7 +46,7 @@ namespace Projeto_DA
 
         private void listBoxClientes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(listBoxClientes.SelectedIndex == null)
+            if(listBoxClientes.SelectedIndex == -1)
             {
                 return;
             }
@@ -57,22 +61,22 @@ namespace Projeto_DA
 
         private void btAlterarCliente_Click(object sender, EventArgs e)
         {
-            Cliente cliente = (Cliente)listBoxClientes.SelectedItem; 
+			if (listBoxClientes.SelectedItem == null)
+			{
+				MessageBox.Show("Selecione um cliente para alterar.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
 
-            cliente.Nome = textBoxNome.Text;
-            cliente.Morada = textBoxMorada.Text;
-            int NumFiscal = int.Parse(textBoxNif.Text);
-            cliente.NumFiscal = NumFiscal;
+			Cliente clienteSelecionado = (Cliente)listBoxClientes.SelectedItem;
 
-            try
-            {
-                var db = new Modelos.ApplicationContext();
-                db.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-        }
+			string novoNome = textBoxNome.Text;
+			string novaMorada = textBoxMorada.Text;
+			int novoNif = int.Parse(textBoxNif.Text);
+
+			ClienteController.AlterarCliente(clienteSelecionado.Id, novoNome, novaMorada,
+				novoNif);
+
+			ClientesRefresh();
+		}
     }
 }

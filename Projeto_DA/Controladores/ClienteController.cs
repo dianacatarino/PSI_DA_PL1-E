@@ -26,5 +26,20 @@ namespace Projeto_DA.Controladores
                 return db.Clientes.ToList();
             }
         }
+
+        public static void AlterarCliente(int clienteId, string novoNome, string novaMorada, int novoNif)
+        {
+            using (var db = new ApplicationContext())
+            {
+				var cliente = db.Clientes.Find(clienteId);
+				if (cliente != null)
+                {
+					cliente.Nome = novoNome;
+					cliente.Morada = novaMorada;
+					cliente.NumFiscal = novoNif;
+					db.SaveChanges();
+				}
+			}
+        }
     }
 }

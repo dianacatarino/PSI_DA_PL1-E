@@ -14,10 +14,14 @@ namespace Projeto_DA
 {
     public partial class CinemaForm : Form
     {
-        public CinemaForm()
+		private Projeto_DA.Modelos.ApplicationContext db;
+
+		public CinemaForm()
         {
             InitializeComponent();
-        }
+			db = new Projeto_DA.Modelos.ApplicationContext();
+			CinemaRefresh();
+		}
 
         private void voltarToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -41,7 +45,7 @@ namespace Projeto_DA
 
         private void listBoxCinema_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listBoxCinema.SelectedIndex == null)
+            if (listBoxCinema.SelectedIndex == -1)
             {
                 return;
             }
@@ -55,7 +59,7 @@ namespace Projeto_DA
 
         private void btAlterarCinema_Click(object sender, EventArgs e)
         {
-            Cinema cinemaSelecionado = (Cinema)listBoxCinema.SelectedItem;
+			Cinema cinemaSelecionado = (Cinema)listBoxCinema.SelectedItem;
 
             string novoNome = textBoxNomeCinema.Text;
             string novoEmail = textBoxEmailCinema.Text;

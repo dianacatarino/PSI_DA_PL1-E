@@ -28,175 +28,178 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBoxFuncionarios = new System.Windows.Forms.ListBox();
-            this.btAlterarFuncionario = new System.Windows.Forms.Button();
-            this.btAdicionarFuncionario = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBoxSalario = new System.Windows.Forms.TextBox();
-            this.textBoxMorada = new System.Windows.Forms.TextBox();
-            this.textBoxNome = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBoxFuncao = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.voltarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1.SuspendLayout();
-            this.SuspendLayout();
-            // 
-            // listBoxFuncionarios
-            // 
-            this.listBoxFuncionarios.FormattingEnabled = true;
-            this.listBoxFuncionarios.ItemHeight = 16;
-            this.listBoxFuncionarios.Location = new System.Drawing.Point(108, 61);
-            this.listBoxFuncionarios.Name = "listBoxFuncionarios";
-            this.listBoxFuncionarios.Size = new System.Drawing.Size(330, 308);
-            this.listBoxFuncionarios.TabIndex = 34;
-            // 
-            // btAlterarFuncionario
-            // 
-            this.btAlterarFuncionario.Location = new System.Drawing.Point(610, 306);
-            this.btAlterarFuncionario.Name = "btAlterarFuncionario";
-            this.btAlterarFuncionario.Size = new System.Drawing.Size(75, 23);
-            this.btAlterarFuncionario.TabIndex = 33;
-            this.btAlterarFuncionario.Text = "Alterar";
-            this.btAlterarFuncionario.UseVisualStyleBackColor = true;
-            // 
-            // btAdicionarFuncionario
-            // 
-            this.btAdicionarFuncionario.Location = new System.Drawing.Point(512, 306);
-            this.btAdicionarFuncionario.Name = "btAdicionarFuncionario";
-            this.btAdicionarFuncionario.Size = new System.Drawing.Size(92, 23);
-            this.btAdicionarFuncionario.TabIndex = 32;
-            this.btAdicionarFuncionario.Text = "Adicionar";
-            this.btAdicionarFuncionario.UseVisualStyleBackColor = true;
-            this.btAdicionarFuncionario.Click += new System.EventHandler(this.btAdicionarFuncionario_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(455, 232);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 16);
-            this.label4.TabIndex = 31;
-            this.label4.Text = "Salário:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(455, 191);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(57, 16);
-            this.label3.TabIndex = 30;
-            this.label3.Text = "Morada:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(455, 152);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 16);
-            this.label2.TabIndex = 29;
-            this.label2.Text = "Nome:";
-            // 
-            // textBoxSalario
-            // 
-            this.textBoxSalario.Location = new System.Drawing.Point(513, 226);
-            this.textBoxSalario.Name = "textBoxSalario";
-            this.textBoxSalario.Size = new System.Drawing.Size(165, 22);
-            this.textBoxSalario.TabIndex = 28;
-            // 
-            // textBoxMorada
-            // 
-            this.textBoxMorada.Location = new System.Drawing.Point(513, 185);
-            this.textBoxMorada.Name = "textBoxMorada";
-            this.textBoxMorada.Size = new System.Drawing.Size(165, 22);
-            this.textBoxMorada.TabIndex = 27;
-            // 
-            // textBoxNome
-            // 
-            this.textBoxNome.Location = new System.Drawing.Point(513, 147);
-            this.textBoxNome.Name = "textBoxNome";
-            this.textBoxNome.Size = new System.Drawing.Size(165, 22);
-            this.textBoxNome.TabIndex = 26;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(493, 103);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(192, 16);
-            this.label1.TabIndex = 25;
-            this.label1.Text = "Consultar e Editar Funcionarios";
-            // 
-            // textBoxFuncao
-            // 
-            this.textBoxFuncao.Location = new System.Drawing.Point(513, 268);
-            this.textBoxFuncao.Name = "textBoxFuncao";
-            this.textBoxFuncao.Size = new System.Drawing.Size(165, 22);
-            this.textBoxFuncao.TabIndex = 35;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(455, 271);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(55, 16);
-            this.label5.TabIndex = 36;
-            this.label5.Text = "Função:";
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+			this.listBoxFuncionarios = new System.Windows.Forms.ListBox();
+			this.btAlterarFuncionario = new System.Windows.Forms.Button();
+			this.btAdicionarFuncionario = new System.Windows.Forms.Button();
+			this.label4 = new System.Windows.Forms.Label();
+			this.label3 = new System.Windows.Forms.Label();
+			this.label2 = new System.Windows.Forms.Label();
+			this.textBoxSalario = new System.Windows.Forms.TextBox();
+			this.textBoxMorada = new System.Windows.Forms.TextBox();
+			this.textBoxNome = new System.Windows.Forms.TextBox();
+			this.label1 = new System.Windows.Forms.Label();
+			this.textBoxFuncao = new System.Windows.Forms.TextBox();
+			this.label5 = new System.Windows.Forms.Label();
+			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+			this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.voltarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.menuStrip1.SuspendLayout();
+			this.SuspendLayout();
+			// 
+			// listBoxFuncionarios
+			// 
+			this.listBoxFuncionarios.FormattingEnabled = true;
+			this.listBoxFuncionarios.ItemHeight = 16;
+			this.listBoxFuncionarios.Location = new System.Drawing.Point(108, 61);
+			this.listBoxFuncionarios.Name = "listBoxFuncionarios";
+			this.listBoxFuncionarios.Size = new System.Drawing.Size(330, 308);
+			this.listBoxFuncionarios.TabIndex = 34;
+			this.listBoxFuncionarios.SelectedIndexChanged += new System.EventHandler(this.listBoxFuncionarios_SelectedIndexChanged);
+			// 
+			// btAlterarFuncionario
+			// 
+			this.btAlterarFuncionario.Location = new System.Drawing.Point(610, 306);
+			this.btAlterarFuncionario.Name = "btAlterarFuncionario";
+			this.btAlterarFuncionario.Size = new System.Drawing.Size(75, 23);
+			this.btAlterarFuncionario.TabIndex = 33;
+			this.btAlterarFuncionario.Text = "Alterar";
+			this.btAlterarFuncionario.UseVisualStyleBackColor = true;
+			this.btAlterarFuncionario.Click += new System.EventHandler(this.btAlterarFuncionario_Click);
+			// 
+			// btAdicionarFuncionario
+			// 
+			this.btAdicionarFuncionario.Location = new System.Drawing.Point(512, 306);
+			this.btAdicionarFuncionario.Name = "btAdicionarFuncionario";
+			this.btAdicionarFuncionario.Size = new System.Drawing.Size(92, 23);
+			this.btAdicionarFuncionario.TabIndex = 32;
+			this.btAdicionarFuncionario.Text = "Adicionar";
+			this.btAdicionarFuncionario.UseVisualStyleBackColor = true;
+			this.btAdicionarFuncionario.Click += new System.EventHandler(this.btAdicionarFuncionario_Click);
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(455, 232);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(53, 16);
+			this.label4.TabIndex = 31;
+			this.label4.Text = "Salário:";
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(455, 191);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(57, 16);
+			this.label3.TabIndex = 30;
+			this.label3.Text = "Morada:";
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(455, 152);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(47, 16);
+			this.label2.TabIndex = 29;
+			this.label2.Text = "Nome:";
+			// 
+			// textBoxSalario
+			// 
+			this.textBoxSalario.Location = new System.Drawing.Point(513, 226);
+			this.textBoxSalario.Name = "textBoxSalario";
+			this.textBoxSalario.Size = new System.Drawing.Size(165, 22);
+			this.textBoxSalario.TabIndex = 28;
+			// 
+			// textBoxMorada
+			// 
+			this.textBoxMorada.Location = new System.Drawing.Point(513, 185);
+			this.textBoxMorada.Name = "textBoxMorada";
+			this.textBoxMorada.Size = new System.Drawing.Size(165, 22);
+			this.textBoxMorada.TabIndex = 27;
+			// 
+			// textBoxNome
+			// 
+			this.textBoxNome.Location = new System.Drawing.Point(513, 147);
+			this.textBoxNome.Name = "textBoxNome";
+			this.textBoxNome.Size = new System.Drawing.Size(165, 22);
+			this.textBoxNome.TabIndex = 26;
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(493, 103);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(192, 16);
+			this.label1.TabIndex = 25;
+			this.label1.Text = "Consultar e Editar Funcionarios";
+			// 
+			// textBoxFuncao
+			// 
+			this.textBoxFuncao.Location = new System.Drawing.Point(513, 268);
+			this.textBoxFuncao.Name = "textBoxFuncao";
+			this.textBoxFuncao.Size = new System.Drawing.Size(165, 22);
+			this.textBoxFuncao.TabIndex = 35;
+			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.Location = new System.Drawing.Point(455, 271);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(55, 16);
+			this.label5.TabIndex = 36;
+			this.label5.Text = "Função:";
+			// 
+			// menuStrip1
+			// 
+			this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
-            this.menuStrip1.TabIndex = 37;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // menuToolStripMenuItem
-            // 
-            this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+			this.menuStrip1.Name = "menuStrip1";
+			this.menuStrip1.Size = new System.Drawing.Size(800, 28);
+			this.menuStrip1.TabIndex = 37;
+			this.menuStrip1.Text = "menuStrip1";
+			// 
+			// menuToolStripMenuItem
+			// 
+			this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.voltarToolStripMenuItem});
-            this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
-            this.menuToolStripMenuItem.Size = new System.Drawing.Size(60, 26);
-            this.menuToolStripMenuItem.Text = "Menu";
-            // 
-            // voltarToolStripMenuItem
-            // 
-            this.voltarToolStripMenuItem.Name = "voltarToolStripMenuItem";
-            this.voltarToolStripMenuItem.Size = new System.Drawing.Size(131, 26);
-            this.voltarToolStripMenuItem.Text = "Voltar";
-            // 
-            // FuncionariosForm
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBoxFuncao);
-            this.Controls.Add(this.listBoxFuncionarios);
-            this.Controls.Add(this.btAlterarFuncionario);
-            this.Controls.Add(this.btAdicionarFuncionario);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBoxSalario);
-            this.Controls.Add(this.textBoxMorada);
-            this.Controls.Add(this.textBoxNome);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
-            this.Name = "FuncionariosForm";
-            this.Text = "Funcionarios";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+			this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
+			this.menuToolStripMenuItem.Size = new System.Drawing.Size(60, 24);
+			this.menuToolStripMenuItem.Text = "Menu";
+			// 
+			// voltarToolStripMenuItem
+			// 
+			this.voltarToolStripMenuItem.Name = "voltarToolStripMenuItem";
+			this.voltarToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+			this.voltarToolStripMenuItem.Text = "Voltar";
+			this.voltarToolStripMenuItem.Click += new System.EventHandler(this.voltarToolStripMenuItem_Click);
+			// 
+			// FuncionariosForm
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.label5);
+			this.Controls.Add(this.textBoxFuncao);
+			this.Controls.Add(this.listBoxFuncionarios);
+			this.Controls.Add(this.btAlterarFuncionario);
+			this.Controls.Add(this.btAdicionarFuncionario);
+			this.Controls.Add(this.label4);
+			this.Controls.Add(this.label3);
+			this.Controls.Add(this.label2);
+			this.Controls.Add(this.textBoxSalario);
+			this.Controls.Add(this.textBoxMorada);
+			this.Controls.Add(this.textBoxNome);
+			this.Controls.Add(this.label1);
+			this.Controls.Add(this.menuStrip1);
+			this.MainMenuStrip = this.menuStrip1;
+			this.Name = "FuncionariosForm";
+			this.Text = "Funcionarios";
+			this.menuStrip1.ResumeLayout(false);
+			this.menuStrip1.PerformLayout();
+			this.ResumeLayout(false);
+			this.PerformLayout();
 
         }
 
