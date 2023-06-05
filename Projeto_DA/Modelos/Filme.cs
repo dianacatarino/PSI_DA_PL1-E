@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace Projeto_DA.Modelos
 {
-    public class Filme: Categoria
+    public class Filme
     {
         public int Id { get; set; }
         public string Nome { get; set; }
         public TimeSpan Duracao { get; set; }
         public Boolean Ativo { get; set; }
-
-        public Categoria Categoria { get; set; }
+		public Categoria Categoria { get; set; }
 
         public override string ToString()
         {
-            return $"Nome: {Nome}, Duracao: {Duracao}, Ativo: {Ativo}";
+			string categoriaNome = Categoria != null ? Categoria.Nome : "N/A";
+			return $"{Nome}, {Duracao}, {categoriaNome}, {Ativo}";
         }
     }
 }

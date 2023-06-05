@@ -11,5 +11,10 @@ namespace Projeto_DA.Modelos
         public int Id { get; set; }
         public string Nome { get; set; }
         public Boolean Ativa { get; set; }
-    }
+
+		public override string ToString()
+		{
+			return Nome;
+		}
+	}
 }

@@ -26,5 +26,13 @@ namespace Projeto_DA.Controladores
                 return db.Salas.ToList();
             }
         }
-    }
+
+		/*public static Filme GetSala(string sala)
+		{
+			using (var db = new ApplicationContext())
+			{
+				return db.Salas.Where(c => c.Nome == sala).FirstOrDefault();
+			}
+		}*/
+	}
 }

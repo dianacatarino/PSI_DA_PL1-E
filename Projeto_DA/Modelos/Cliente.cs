@@ -7,7 +7,8 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace Projeto_DA.Modelos
 {
-    public class Cliente: Pessoa
+	[Serializable]
+	public class Cliente: Pessoa
     {
         public int Id { get; set; }
         public int NumFiscal { get; set; }

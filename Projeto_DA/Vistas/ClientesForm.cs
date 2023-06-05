@@ -5,7 +5,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -78,5 +80,31 @@ namespace Projeto_DA
 
 			ClientesRefresh();
 		}
-    }
+
+		private void guardarDadosToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			SaveFileDialog sfd = new SaveFileDialog();
+			sfd.FileName = "dados_clientes.bin";
+			sfd.Filter = "Dados binários | *.bin";
+
+			DialogResult dialogResult = sfd.ShowDialog();
+			if (dialogResult == DialogResult.OK)
+			{
+				GuardarDadosBinarios(sfd.FileName);
+			}
+		}
+
+		private void GuardarDadosBinarios(string fileName)
+		{
+			List<Cliente> listaClientes =
+				listBoxClientes.Items.Cast<Cliente>().ToList();
+
+			FileStream fs = new FileStream(fileName, FileMode.Create, FileAccess.Write);
+
+			BinaryFormatter bf = new BinaryFormatter();
+			bf.Serialize(fs, listaClientes);
+
+			fs.Close();
+		}
+	}
 }

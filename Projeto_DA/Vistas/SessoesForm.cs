@@ -28,9 +28,12 @@ namespace Projeto_DA
 
         private void btAdicionarSessoes_Click(object sender, EventArgs e)
         {
-            SessaoController.AdicionarSessao(textBoxFilmeSessoes.Text, textBoxSala.Text,
-                DateTime.Parse(dateTimePickerInicio.Text), DateTime.Parse(dateTimePickerFim.Text));
-            SessoesRefresh();
+			/*Filme filme = FilmeController.GetFilme(comboBoxFilme.Text);
+			Sala sala = SalaController.GetSala(comboBoxSala.Text);
+
+			SessaoController.AdicionarSessao(filme, sala, DateTime.Parse(dateTimePickerInicio.Text), 
+                DateTime.Parse(dateTimePickerFim.Text));
+            SessoesRefresh();*/
         }
 
         private void SessoesRefresh()
@@ -42,7 +45,7 @@ namespace Projeto_DA
 
         private void listBoxSessoes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listBoxSessoes.SelectedIndex == null)
+            if (listBoxSessoes.SelectedIndex == -1)
             {
                 return;
             }
@@ -51,10 +54,57 @@ namespace Projeto_DA
             Sala sala = (Sala)listBoxSessoes.SelectedItem;
             Sessao sessao = (Sessao)listBoxSessoes.SelectedValue;
 
-            textBoxFilmeSessoes.Text = filme.Nome;
-            textBoxSala.Text = sala.Nome;
-            dateTimePickerInicio.Text = sessao.DataHoraInicio.ToString();
+            comboBoxFilme.Text = filme.Nome;
+            comboBoxSala.Text = sala.Nome;
+            dateTimePickerData.Text = sessao.DataHoraInicio.ToString();
             dateTimePickerFim.Text = sessao.DataHoraFim.ToString();
         }
-    }
+        private void btAlterarSessoes_Click(object sender, EventArgs e)
+		{
+			if (listBoxSessoes.SelectedItem == null)
+			{
+				MessageBox.Show("Selecione uma sessão para alterar.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
+
+			Sessao sessaoSelecionada = (Sessao)listBoxSessoes.SelectedItem;
+
+			string novoFilme = comboBoxFilme.Text;
+			string novaSala = comboBoxSala.Text;
+			string novaDataHoraInicio = dateTimePickerData.Text;
+            string novaDataHoraFim = dateTimePickerFim.Text;
+
+			SessaoController.AlterarSessao(sessaoSelecionada.Id, novoFilme, novaSala, TimeSpan.Parse(novaDataHoraInicio),
+				TimeSpan.Parse(novaDataHoraFim));
+
+			SessoesRefresh();
+		}
+
+		private void SessoesForm_Load(object sender, EventArgs e)
+		{
+			using (var db = new Projeto_DA.Modelos.ApplicationContext())
+			{
+				var filmes = db.Filmes.ToList();
+                var salas = db.Salas.ToList();
+
+				comboBoxFilme.Items.Clear();
+				comboBoxFilme.DisplayMember = "Nome";
+
+				foreach (var filme in filmes)
+				{
+					comboBoxFilme.Items.Add(filme);
+				}
+
+				comboBoxSala.Items.Clear();
+				comboBoxSala.DisplayMember = "Nome";
+
+				foreach (var sala in salas)
+				{
+					comboBoxSala.Items.Add(sala);
+				}
+			}
+		}
+
+		
+	}
 }

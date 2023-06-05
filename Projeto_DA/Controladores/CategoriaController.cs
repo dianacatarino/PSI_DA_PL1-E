@@ -26,5 +26,13 @@ namespace Projeto_DA.Controladores
                 return db.Categorias.ToList();
             }
         }
-    }
+
+		public static Categoria GetCategoria(string categoria)
+		{
+			using (var db = new ApplicationContext())
+			{
+				return db.Categorias.Where(c => c.Nome == categoria).FirstOrDefault();
+			}
+		}
+	}
 }

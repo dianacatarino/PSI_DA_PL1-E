@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -41,7 +42,7 @@ namespace Projeto_DA
 
         private void btClientes_Click(object sender, EventArgs e)
         {
-            ClientesForm clientesForm = new ClientesForm ();
+            ClientesForm clientesForm = new ClientesForm();
             Hide();
             clientesForm.ShowDialog();
         }
@@ -52,5 +53,43 @@ namespace Projeto_DA
             Hide();
             funcionariosform.ShowDialog();
         }
-    }
+
+        private void btCriarBilhete_Click(object sender, EventArgs e)
+        {
+            AtendimentoForm atendimentosform = new AtendimentoForm();
+            Hide();
+            atendimentosform.ShowDialog();
+        }
+
+        private void alterarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AlterarForm alterarform = new AlterarForm();
+            Hide();
+            alterarform.ShowDialog();
+        }
+
+        private void listBoxSessoesAtuais_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AtendimentoForm atendimentosform = new AtendimentoForm();
+            Hide();
+            atendimentosform.ShowDialog();
+        }
+
+		private void MenuForm_Load(object sender, EventArgs e)
+		{
+			/*using (var db = new Projeto_DA.Modelos.ApplicationContext())
+			{
+				var sessoes = db.Sessoes.ToList();
+
+				listBoxSessoesAtuais.Items.Clear();
+
+				listBoxSessoesAtuais.DisplayMember = "Nome";
+
+				foreach (var sessao in sessoes)
+				{
+					listBoxSessoesAtuais.Items.Add(sessao);
+				}
+			}*/
+		}
+	}
 }

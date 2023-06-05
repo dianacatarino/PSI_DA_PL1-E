@@ -58,7 +58,7 @@
 			// 
 			// btAlterarFuncionario
 			// 
-			this.btAlterarFuncionario.Location = new System.Drawing.Point(610, 306);
+			this.btAlterarFuncionario.Location = new System.Drawing.Point(610, 299);
 			this.btAlterarFuncionario.Name = "btAlterarFuncionario";
 			this.btAlterarFuncionario.Size = new System.Drawing.Size(75, 23);
 			this.btAlterarFuncionario.TabIndex = 33;
@@ -68,7 +68,7 @@
 			// 
 			// btAdicionarFuncionario
 			// 
-			this.btAdicionarFuncionario.Location = new System.Drawing.Point(512, 306);
+			this.btAdicionarFuncionario.Location = new System.Drawing.Point(512, 299);
 			this.btAdicionarFuncionario.Name = "btAdicionarFuncionario";
 			this.btAdicionarFuncionario.Size = new System.Drawing.Size(92, 23);
 			this.btAdicionarFuncionario.TabIndex = 32;
@@ -79,7 +79,7 @@
 			// label4
 			// 
 			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(455, 232);
+			this.label4.Location = new System.Drawing.Point(455, 225);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(53, 16);
 			this.label4.TabIndex = 31;
@@ -88,7 +88,7 @@
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(455, 191);
+			this.label3.Location = new System.Drawing.Point(455, 184);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(57, 16);
 			this.label3.TabIndex = 30;
@@ -97,7 +97,7 @@
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(455, 152);
+			this.label2.Location = new System.Drawing.Point(455, 145);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(47, 16);
 			this.label2.TabIndex = 29;
@@ -105,21 +105,21 @@
 			// 
 			// textBoxSalario
 			// 
-			this.textBoxSalario.Location = new System.Drawing.Point(513, 226);
+			this.textBoxSalario.Location = new System.Drawing.Point(513, 219);
 			this.textBoxSalario.Name = "textBoxSalario";
 			this.textBoxSalario.Size = new System.Drawing.Size(165, 22);
 			this.textBoxSalario.TabIndex = 28;
 			// 
 			// textBoxMorada
 			// 
-			this.textBoxMorada.Location = new System.Drawing.Point(513, 185);
+			this.textBoxMorada.Location = new System.Drawing.Point(513, 178);
 			this.textBoxMorada.Name = "textBoxMorada";
 			this.textBoxMorada.Size = new System.Drawing.Size(165, 22);
 			this.textBoxMorada.TabIndex = 27;
 			// 
 			// textBoxNome
 			// 
-			this.textBoxNome.Location = new System.Drawing.Point(513, 147);
+			this.textBoxNome.Location = new System.Drawing.Point(513, 140);
 			this.textBoxNome.Name = "textBoxNome";
 			this.textBoxNome.Size = new System.Drawing.Size(165, 22);
 			this.textBoxNome.TabIndex = 26;
@@ -127,7 +127,7 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(493, 103);
+			this.label1.Location = new System.Drawing.Point(493, 96);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(192, 16);
 			this.label1.TabIndex = 25;
@@ -135,7 +135,7 @@
 			// 
 			// textBoxFuncao
 			// 
-			this.textBoxFuncao.Location = new System.Drawing.Point(513, 268);
+			this.textBoxFuncao.Location = new System.Drawing.Point(513, 261);
 			this.textBoxFuncao.Name = "textBoxFuncao";
 			this.textBoxFuncao.Size = new System.Drawing.Size(165, 22);
 			this.textBoxFuncao.TabIndex = 35;
@@ -143,7 +143,7 @@
 			// label5
 			// 
 			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(455, 271);
+			this.label5.Location = new System.Drawing.Point(455, 264);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(55, 16);
 			this.label5.TabIndex = 36;
@@ -171,7 +171,7 @@
 			// voltarToolStripMenuItem
 			// 
 			this.voltarToolStripMenuItem.Name = "voltarToolStripMenuItem";
-			this.voltarToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+			this.voltarToolStripMenuItem.Size = new System.Drawing.Size(131, 26);
 			this.voltarToolStripMenuItem.Text = "Voltar";
 			this.voltarToolStripMenuItem.Click += new System.EventHandler(this.voltarToolStripMenuItem_Click);
 			// 
