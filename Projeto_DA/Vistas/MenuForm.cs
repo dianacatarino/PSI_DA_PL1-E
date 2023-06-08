@@ -1,4 +1,5 @@
-﻿using Projeto_DA.Vistas;
+﻿using Projeto_DA.Modelos;
+using Projeto_DA.Vistas;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,12 +15,20 @@ namespace Projeto_DA
 {
     public partial class MenuForm : Form
     {
-        public MenuForm()
+		private Funcionario funcionarioAutenticado;
+		public static string NomeFuncionario { get; set; }
+		public MenuForm()
         {
             InitializeComponent();
-        }
+		}
 
-        private void btCinema_Click(object sender, EventArgs e)
+		public void AtualizarNomeFuncionario(Funcionario funcionario)
+		{
+			funcionarioAutenticado = funcionario;
+			funcionarioToolStripMenuItem.Text = funcionarioAutenticado.Nome;
+		}
+
+		private void btCinema_Click(object sender, EventArgs e)
         {
             CinemaForm cinemaform = new CinemaForm();
             Hide();
@@ -70,9 +79,18 @@ namespace Projeto_DA
 
         private void listBoxSessoesAtuais_SelectedIndexChanged(object sender, EventArgs e)
         {
-            AtendimentoForm atendimentosform = new AtendimentoForm();
-            Hide();
-            atendimentosform.ShowDialog();
+			if (listBoxSessoesAtuais.SelectedIndex != -1)
+			{
+				string sessaoSelecionada = listBoxSessoesAtuais.SelectedItem.ToString();
+
+				AtendimentoForm atendimentosform = new AtendimentoForm();
+
+				atendimentosform.Sessao = sessaoSelecionada;
+
+				Hide();
+
+				atendimentosform.ShowDialog();
+			}
         }
 
 		private void MenuForm_Load(object sender, EventArgs e)

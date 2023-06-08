@@ -9,11 +9,11 @@ namespace Projeto_DA.Controladores
 {
     internal class SessaoController
     {
-        public static void AdicionarSessao(Filme filme, Sala sala,DateTime datahorainicio, DateTime datahorafim)
+        public static void AdicionarSessao(Filme filme, Sala sala,DateTime datahorainicio, DateTime datahorafim, float preco)
         {
             using (var db = new ApplicationContext())
             {
-                var sessao = new Sessao { Filme = filme, Sala = sala, DataHoraInicio = datahorainicio, DataHoraFim = datahorafim};
+                var sessao = new Sessao { Filme = filme, Sala = sala, DataHoraInicio = datahorainicio, DataHoraFim = datahorafim, Preco = preco};
                 db.Sessoes.Add(sessao);
                 db.SaveChanges();
             }
@@ -27,20 +27,21 @@ namespace Projeto_DA.Controladores
             }
         }
 
-		public static void AlterarSessao(int sessaoId, string novoFilme, string novaSala, TimeSpan novaDataHoraInicio, TimeSpan novaDataHoraFim)
+		public static void AlterarSessao(int sessaoId, Filme novoFilme, Sala novaSala,DateTime novaDataHoraInicio, DateTime novaDataHoraFim, float novoPreco)
 		{
-			/*using (var db = new ApplicationContext())
+			using (var db = new ApplicationContext())
 			{
-				var filme = db.Filmes.Find(filmeId);
-				if (filme != null)
+				var sessao = db.Sessoes.Find(sessaoId);
+				if (sessao != null)
 				{
-					filme.Nome = novoNome;
-					filme.Duracao = novaDuracao;
-					filme.Categoria = novaCategoria;
-					filme.Ativo = novoAtivo;
+					sessao.Filme = novoFilme;
+					sessao.Sala = novaSala;
+					sessao.DataHoraInicio = novaDataHoraInicio;
+					sessao.DataHoraFim = novaDataHoraFim;
+                    sessao.Preco = novoPreco;
 					db.SaveChanges();
 				}
-			}*/
+			}
 		}
 	}
 }

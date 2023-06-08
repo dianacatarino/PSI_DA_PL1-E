@@ -41,6 +41,24 @@ namespace Projeto_DA.Controladores
 					db.SaveChanges();
 				}
 			}
-		}   
-    }
+		}
+
+		public static bool EntrarFuncionario(Funcionario funcionario)
+		{
+			using (var db = new Projeto_DA.Modelos.ApplicationContext())
+			{
+				Funcionario funcionarioAutenticado = db.Funcionarios.FirstOrDefault(f => f.Nome == funcionario.Nome);
+
+				if (funcionarioAutenticado != null)
+				{
+					if (funcionario.Nome == funcionarioAutenticado.Nome)
+					{
+						return true;
+					}
+				}
+			}
+
+			return false;
+		}
+	}
 }

@@ -35,7 +35,7 @@
 			this.btFuncionarios = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-			this.utilizadorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.funcionarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.alterarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.btCriarBilhete = new System.Windows.Forms.Button();
 			this.listBoxSessoesAtuais = new System.Windows.Forms.ListBox();
@@ -105,20 +105,20 @@
 			// 
 			this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.utilizadorToolStripMenuItem});
+            this.funcionarioToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Size = new System.Drawing.Size(800, 28);
 			this.menuStrip1.TabIndex = 6;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
-			// utilizadorToolStripMenuItem
+			// funcionarioToolStripMenuItem
 			// 
-			this.utilizadorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+			this.funcionarioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.alterarToolStripMenuItem});
-			this.utilizadorToolStripMenuItem.Name = "utilizadorToolStripMenuItem";
-			this.utilizadorToolStripMenuItem.Size = new System.Drawing.Size(100, 24);
-			this.utilizadorToolStripMenuItem.Text = "Funcionário";
+			this.funcionarioToolStripMenuItem.Name = "funcionarioToolStripMenuItem";
+			this.funcionarioToolStripMenuItem.Size = new System.Drawing.Size(100, 24);
+			this.funcionarioToolStripMenuItem.Text = "Funcionário";
 			// 
 			// alterarToolStripMenuItem
 			// 
@@ -181,7 +181,7 @@
         private System.Windows.Forms.Button btFuncionarios;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem utilizadorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem funcionarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem alterarToolStripMenuItem;
         private System.Windows.Forms.Button btCriarBilhete;
         private System.Windows.Forms.ListBox listBoxSessoesAtuais;

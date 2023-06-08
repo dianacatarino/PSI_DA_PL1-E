@@ -1,4 +1,6 @@
-﻿namespace Projeto_DA
+﻿using System.Windows.Forms;
+
+namespace Projeto_DA
 {
     partial class SessoesForm
     {
@@ -38,10 +40,12 @@
 			this.label3 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
-			this.dateTimePickerData = new System.Windows.Forms.DateTimePicker();
+			this.dateTimePickerInicio = new System.Windows.Forms.DateTimePicker();
 			this.comboBoxFilme = new System.Windows.Forms.ComboBox();
 			this.comboBoxSala = new System.Windows.Forms.ComboBox();
-			this.textBoxHora = new System.Windows.Forms.TextBox();
+			this.dateTimePickerFim = new System.Windows.Forms.DateTimePicker();
+			this.textBoxPreco = new System.Windows.Forms.TextBox();
+			this.label5 = new System.Windows.Forms.Label();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -83,7 +87,7 @@
 			// 
 			// btAlterarSessoes
 			// 
-			this.btAlterarSessoes.Location = new System.Drawing.Point(601, 325);
+			this.btAlterarSessoes.Location = new System.Drawing.Point(601, 346);
 			this.btAlterarSessoes.Name = "btAlterarSessoes";
 			this.btAlterarSessoes.Size = new System.Drawing.Size(75, 23);
 			this.btAlterarSessoes.TabIndex = 18;
@@ -93,7 +97,7 @@
 			// 
 			// btAdicionarSessoes
 			// 
-			this.btAdicionarSessoes.Location = new System.Drawing.Point(459, 325);
+			this.btAdicionarSessoes.Location = new System.Drawing.Point(459, 346);
 			this.btAdicionarSessoes.Name = "btAdicionarSessoes";
 			this.btAdicionarSessoes.Size = new System.Drawing.Size(83, 23);
 			this.btAdicionarSessoes.TabIndex = 17;
@@ -137,12 +141,14 @@
 			this.label1.TabIndex = 10;
 			this.label1.Text = "Consultar e Editar Sessões";
 			// 
-			// dateTimePickerData
+			// dateTimePickerInicio
 			// 
-			this.dateTimePickerData.Location = new System.Drawing.Point(459, 246);
-			this.dateTimePickerData.Name = "dateTimePickerData";
-			this.dateTimePickerData.Size = new System.Drawing.Size(217, 22);
-			this.dateTimePickerData.TabIndex = 20;
+			this.dateTimePickerInicio.CustomFormat = "dd/MM/yyyy HH:mm";
+			this.dateTimePickerInicio.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.dateTimePickerInicio.Location = new System.Drawing.Point(459, 246);
+			this.dateTimePickerInicio.Name = "dateTimePickerInicio";
+			this.dateTimePickerInicio.Size = new System.Drawing.Size(217, 22);
+			this.dateTimePickerInicio.TabIndex = 20;
 			// 
 			// comboBoxFilme
 			// 
@@ -160,22 +166,42 @@
 			this.comboBoxSala.Size = new System.Drawing.Size(171, 24);
 			this.comboBoxSala.TabIndex = 23;
 			// 
-			// textBoxHora
+			// dateTimePickerFim
 			// 
-			this.textBoxHora.Location = new System.Drawing.Point(459, 285);
-			this.textBoxHora.Name = "textBoxHora";
-			this.textBoxHora.Size = new System.Drawing.Size(217, 22);
-			this.textBoxHora.TabIndex = 24;
+			this.dateTimePickerFim.CustomFormat = "dd/MM/yyyy HH:mm";
+			this.dateTimePickerFim.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.dateTimePickerFim.Location = new System.Drawing.Point(459, 274);
+			this.dateTimePickerFim.Name = "dateTimePickerFim";
+			this.dateTimePickerFim.Size = new System.Drawing.Size(217, 22);
+			this.dateTimePickerFim.TabIndex = 24;
+			// 
+			// textBoxPreco
+			// 
+			this.textBoxPreco.Location = new System.Drawing.Point(505, 318);
+			this.textBoxPreco.Name = "textBoxPreco";
+			this.textBoxPreco.Size = new System.Drawing.Size(171, 22);
+			this.textBoxPreco.TabIndex = 25;
+			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.Location = new System.Drawing.Point(456, 318);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(46, 16);
+			this.label5.TabIndex = 26;
+			this.label5.Text = "Preço:";
 			// 
 			// SessoesForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
-			this.Controls.Add(this.textBoxHora);
+			this.Controls.Add(this.label5);
+			this.Controls.Add(this.textBoxPreco);
+			this.Controls.Add(this.dateTimePickerFim);
 			this.Controls.Add(this.comboBoxSala);
 			this.Controls.Add(this.comboBoxFilme);
-			this.Controls.Add(this.dateTimePickerData);
+			this.Controls.Add(this.dateTimePickerInicio);
 			this.Controls.Add(this.listBoxSessoes);
 			this.Controls.Add(this.btAlterarSessoes);
 			this.Controls.Add(this.btAdicionarSessoes);
@@ -207,9 +233,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePickerData;
+        private System.Windows.Forms.DateTimePicker dateTimePickerInicio;
 		private System.Windows.Forms.ComboBox comboBoxFilme;
 		private System.Windows.Forms.ComboBox comboBoxSala;
-		private System.Windows.Forms.TextBox textBoxHora;
+		private DateTimePicker dateTimePickerFim;
+		private TextBox textBoxPreco;
+		private Label label5;
 	}
 }

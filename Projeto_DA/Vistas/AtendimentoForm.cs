@@ -15,7 +15,8 @@ namespace Projeto_DA
 {
     public partial class AtendimentoForm : Form
     {
-        public AtendimentoForm()
+		public string Sessao;
+		public AtendimentoForm()
         {
             InitializeComponent();
         }

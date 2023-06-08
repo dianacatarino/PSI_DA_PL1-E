@@ -9,7 +9,7 @@ namespace Projeto_DA.Controladores
 {
     internal class SalaController
     {
-        public static void AdicionarSala(string nome, string colunas, int filas)
+        public static void AdicionarSala(string nome, int colunas, int filas)
         {
             using (var db = new ApplicationContext())
             {
@@ -27,12 +27,27 @@ namespace Projeto_DA.Controladores
             }
         }
 
-		/*public static Filme GetSala(string sala)
+		public static Sala GetSala(string sala)
 		{
 			using (var db = new ApplicationContext())
 			{
 				return db.Salas.Where(c => c.Nome == sala).FirstOrDefault();
 			}
-		}*/
+		}
+
+		public static void AlterarSala(int salaId, string novoNome, int novaColunas, int novaFilas)
+		{
+			using (var db = new ApplicationContext())
+			{
+				var sala = db.Salas.Find(salaId);
+				if (sala != null)
+				{
+					sala.Nome = novoNome;
+					sala.Colunas = novaColunas;
+					sala.Filas = novaFilas;
+					db.SaveChanges();
+				}
+			}
+		}
 	}
 }

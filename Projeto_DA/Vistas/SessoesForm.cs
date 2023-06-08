@@ -28,12 +28,12 @@ namespace Projeto_DA
 
         private void btAdicionarSessoes_Click(object sender, EventArgs e)
         {
-			/*Filme filme = FilmeController.GetFilme(comboBoxFilme.Text);
+			Filme filme = FilmeController.GetFilme(comboBoxFilme.Text);
 			Sala sala = SalaController.GetSala(comboBoxSala.Text);
 
 			SessaoController.AdicionarSessao(filme, sala, DateTime.Parse(dateTimePickerInicio.Text), 
-                DateTime.Parse(dateTimePickerFim.Text));
-            SessoesRefresh();*/
+                DateTime.Parse(dateTimePickerFim.Text), float.Parse(textBoxPreco.Text));
+            SessoesRefresh();
         }
 
         private void SessoesRefresh()
@@ -56,8 +56,9 @@ namespace Projeto_DA
 
             comboBoxFilme.Text = filme.Nome;
             comboBoxSala.Text = sala.Nome;
-            dateTimePickerData.Text = sessao.DataHoraInicio.ToString();
+            dateTimePickerInicio.Text = sessao.DataHoraInicio.ToString();
             dateTimePickerFim.Text = sessao.DataHoraFim.ToString();
+            textBoxPreco.Text = sessao.Preco.ToString();
         }
         private void btAlterarSessoes_Click(object sender, EventArgs e)
 		{
@@ -69,13 +70,14 @@ namespace Projeto_DA
 
 			Sessao sessaoSelecionada = (Sessao)listBoxSessoes.SelectedItem;
 
-			string novoFilme = comboBoxFilme.Text;
-			string novaSala = comboBoxSala.Text;
-			string novaDataHoraInicio = dateTimePickerData.Text;
+			Filme novoFilme = FilmeController.GetFilme(comboBoxFilme.Text);
+			Sala novaSala = SalaController.GetSala(comboBoxSala.Text);
+            string novaDataHoraInicio = dateTimePickerInicio.Text;
             string novaDataHoraFim = dateTimePickerFim.Text;
+            string novoPreco = textBoxPreco.Text;
 
-			SessaoController.AlterarSessao(sessaoSelecionada.Id, novoFilme, novaSala, TimeSpan.Parse(novaDataHoraInicio),
-				TimeSpan.Parse(novaDataHoraFim));
+			SessaoController.AlterarSessao(sessaoSelecionada.Id, novoFilme, novaSala, DateTime.Parse(novaDataHoraInicio),
+                DateTime.Parse(novaDataHoraFim), float.Parse(novoPreco));
 
 			SessoesRefresh();
 		}
@@ -104,7 +106,5 @@ namespace Projeto_DA
 				}
 			}
 		}
-
-		
 	}
 }

@@ -31,7 +31,8 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.buttonEntrar = new System.Windows.Forms.Button();
-			this.comboBox1 = new System.Windows.Forms.ComboBox();
+			this.comboBoxFuncionario = new System.Windows.Forms.ComboBox();
+			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -60,26 +61,39 @@
 			this.buttonEntrar.TabIndex = 5;
 			this.buttonEntrar.Text = "Entrar";
 			this.buttonEntrar.UseVisualStyleBackColor = true;
+			this.buttonEntrar.Click += new System.EventHandler(this.buttonEntrar_Click);
 			// 
-			// comboBox1
+			// comboBoxFuncionario
 			// 
-			this.comboBox1.FormattingEnabled = true;
-			this.comboBox1.Location = new System.Drawing.Point(134, 86);
-			this.comboBox1.Name = "comboBox1";
-			this.comboBox1.Size = new System.Drawing.Size(150, 24);
-			this.comboBox1.TabIndex = 6;
+			this.comboBoxFuncionario.FormattingEnabled = true;
+			this.comboBoxFuncionario.Location = new System.Drawing.Point(134, 86);
+			this.comboBoxFuncionario.Name = "comboBoxFuncionario";
+			this.comboBoxFuncionario.Size = new System.Drawing.Size(150, 24);
+			this.comboBoxFuncionario.TabIndex = 6;
+			// 
+			// menuStrip1
+			// 
+			this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+			this.menuStrip1.Name = "menuStrip1";
+			this.menuStrip1.Size = new System.Drawing.Size(438, 24);
+			this.menuStrip1.TabIndex = 7;
+			this.menuStrip1.Text = "menuStrip1";
 			// 
 			// AlterarForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(438, 178);
-			this.Controls.Add(this.comboBox1);
+			this.Controls.Add(this.comboBoxFuncionario);
 			this.Controls.Add(this.buttonEntrar);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
+			this.Controls.Add(this.menuStrip1);
+			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "AlterarForm";
 			this.Text = "AlterarForm";
+			this.Load += new System.EventHandler(this.AlterarForm_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -90,6 +104,7 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Button buttonEntrar;
-		private System.Windows.Forms.ComboBox comboBox1;
+		private System.Windows.Forms.ComboBox comboBoxFuncionario;
+		private System.Windows.Forms.MenuStrip menuStrip1;
 	}
 }

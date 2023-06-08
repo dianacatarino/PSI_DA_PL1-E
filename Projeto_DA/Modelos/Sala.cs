@@ -11,7 +11,7 @@ namespace Projeto_DA.Modelos
     {
         public int Id { get; set; }
         public string Nome { get; set; }
-        public string Colunas { get; set; }
+        public int Colunas { get; set; }
         public int Filas { get; set; }
 
         public Cinema Cinema { get; set; }
@@ -19,7 +19,7 @@ namespace Projeto_DA.Modelos
 
         public override string ToString()
         {
-            return $"Nome: {Nome}, Colunas: {Colunas}, Filas: {Filas}";
+            return $"{Nome}, {Colunas}, {Filas}";
         }
     }
 }

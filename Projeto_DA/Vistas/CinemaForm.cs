@@ -21,6 +21,7 @@ namespace Projeto_DA
             InitializeComponent();
 			db = new Projeto_DA.Modelos.ApplicationContext();
 			CinemaRefresh();
+            SalasRefresh();
 		}
 
         private void voltarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -69,5 +70,45 @@ namespace Projeto_DA
 
             CinemaRefresh();
         }
-    }
+
+		private void btAdicionarSala_Click(object sender, EventArgs e)
+		{
+			SalaController.AdicionarSala(textBoxNomeSala.Text, int.Parse(textBoxColunas.Text), int.Parse(textBoxFilas.Text));
+			SalasRefresh();
+		}
+
+		private void SalasRefresh()
+		{
+			var sala = SalaController.GetSalas();
+			listBoxSalas.DataSource = null;
+			listBoxSalas.DataSource = sala;
+		}
+
+		private void listBoxSalas_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (listBoxSalas.SelectedIndex == -1)
+			{
+				return;
+			}
+
+			Sala sala = (Sala)listBoxSalas.SelectedItem;
+
+			textBoxNomeSala.Text = sala.Nome;
+			textBoxColunas.Text = sala.Colunas.ToString();
+			textBoxFilas.Text = sala.Filas.ToString();
+		}
+
+		private void btAlterarSala_Click(object sender, EventArgs e)
+		{
+			Sala salaSelecionada = (Sala)listBoxSalas.SelectedItem;
+
+			string novoNome = textBoxNomeSala.Text;
+			int novaColunas = int.Parse(textBoxColunas.Text);
+			int novaFilas = int.Parse(textBoxFilas.Text);
+
+			SalaController.AlterarSala(salaSelecionada.Id, novoNome, novaColunas, novaFilas);
+
+			SalasRefresh();
+		}
+	}
 }
