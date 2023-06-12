@@ -14,19 +14,10 @@ namespace Projeto_DA.Controladores
         {
 			using (var db = new ApplicationContext())
 			{
-				try
-				{
-
-					var filme = new Filme { Nome = nome, Duracao = duracao, Categoria = categoria, Ativo = ativo };
-					db.Filmes.Add(filme);
-					db.SaveChanges();
+				var filme = new Filme { Nome = nome, Duracao = duracao, Categoria = categoria, Ativo = ativo };
+				db.Filmes.Add(filme);
+				db.SaveChanges();
 				
-				}
-				catch (Exception ex)
-				{
-					Console.WriteLine("Ocorreu um erro ao adicionar o filme:");
-					Console.WriteLine(ex.InnerException.Message);
-				}
 			}
 		}
 

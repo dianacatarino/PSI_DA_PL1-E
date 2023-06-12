@@ -18,7 +18,7 @@ namespace Projeto_DA.Modelos
 
         public override string ToString()
         {
-            return $"{DataHoraInicio}, {DataHoraFim}, {Preco}";
+            return $"{Id},{DataHoraInicio}, {DataHoraFim}, {Preco}";
         }
     }
 }

@@ -14,10 +14,13 @@ namespace Projeto_DA
 {
     public partial class SessoesForm : Form
     {
-        public SessoesForm()
+		private Projeto_DA.Modelos.ApplicationContext db;
+		public SessoesForm()
         {
             InitializeComponent();
-        }
+			db = new Projeto_DA.Modelos.ApplicationContext();
+			SessoesRefresh();
+		}
 
         private void voltarToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -45,21 +48,21 @@ namespace Projeto_DA
 
         private void listBoxSessoes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listBoxSessoes.SelectedIndex == -1)
-            {
-                return;
-            }
+			if (listBoxSessoes.SelectedIndex == -1)
+			{
+				return;
+			}
 
-            Filme filme = (Filme)listBoxSessoes.SelectedItem;
-            Sala sala = (Sala)listBoxSessoes.SelectedItem;
-            Sessao sessao = (Sessao)listBoxSessoes.SelectedValue;
+			Sessao sessao = (Sessao)listBoxSessoes.SelectedItem;
+			Filme filme = sessao.Filme;
+			Sala sala = sessao.Sala;
 
-            comboBoxFilme.Text = filme.Nome;
-            comboBoxSala.Text = sala.Nome;
-            dateTimePickerInicio.Text = sessao.DataHoraInicio.ToString();
-            dateTimePickerFim.Text = sessao.DataHoraFim.ToString();
-            textBoxPreco.Text = sessao.Preco.ToString();
-        }
+			comboBoxFilme.Text = filme.Nome;
+			comboBoxSala.Text = sala.Nome;
+			dateTimePickerInicio.Text = sessao.DataHoraInicio.ToString();
+			dateTimePickerFim.Text = sessao.DataHoraFim.ToString();
+			textBoxPreco.Text = sessao.Preco.ToString();
+		}
         private void btAlterarSessoes_Click(object sender, EventArgs e)
 		{
 			if (listBoxSessoes.SelectedItem == null)

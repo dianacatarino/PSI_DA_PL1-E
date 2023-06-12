@@ -1,4 +1,5 @@
-﻿using Projeto_DA.Modelos;
+﻿using Projeto_DA.Controladores;
+using Projeto_DA.Modelos;
 using Projeto_DA.Vistas;
 using System;
 using System.Collections.Generic;
@@ -77,37 +78,12 @@ namespace Projeto_DA
             alterarform.ShowDialog();
         }
 
-        private void listBoxSessoesAtuais_SelectedIndexChanged(object sender, EventArgs e)
-        {
-			if (listBoxSessoesAtuais.SelectedIndex != -1)
-			{
-				string sessaoSelecionada = listBoxSessoesAtuais.SelectedItem.ToString();
-
-				AtendimentoForm atendimentosform = new AtendimentoForm();
-
-				atendimentosform.Sessao = sessaoSelecionada;
-
-				Hide();
-
-				atendimentosform.ShowDialog();
-			}
-        }
-
-		private void MenuForm_Load(object sender, EventArgs e)
+		private void dataGridViewSessoesAtuais_CellContentClick(object sender, DataGridViewCellEventArgs e)
 		{
-			/*using (var db = new Projeto_DA.Modelos.ApplicationContext())
-			{
-				var sessoes = db.Sessoes.ToList();
+			List<Sessao> sessoesAtuais = SessaoController.GetSessoesAtuais();
 
-				listBoxSessoesAtuais.Items.Clear();
-
-				listBoxSessoesAtuais.DisplayMember = "Nome";
-
-				foreach (var sessao in sessoes)
-				{
-					listBoxSessoesAtuais.Items.Add(sessao);
-				}
-			}*/
+			dataGridViewSessoesAtuais.DataSource = sessoesAtuais;
+			dataGridViewSessoesAtuais.Refresh();
 		}
 	}
 }

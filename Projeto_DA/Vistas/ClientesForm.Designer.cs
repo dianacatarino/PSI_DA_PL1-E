@@ -46,7 +46,6 @@
 			this.textBoxNBilhetes = new System.Windows.Forms.TextBox();
 			this.textBoxValorBilhetes = new System.Windows.Forms.TextBox();
 			this.label7 = new System.Windows.Forms.Label();
-			this.guardarDadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -64,8 +63,7 @@
 			// menuToolStripMenuItem
 			// 
 			this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.voltarToolStripMenuItem,
-            this.guardarDadosToolStripMenuItem});
+            this.voltarToolStripMenuItem});
 			this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
 			this.menuToolStripMenuItem.Size = new System.Drawing.Size(60, 24);
 			this.menuToolStripMenuItem.Text = "Menu";
@@ -205,13 +203,6 @@
 			this.label7.TabIndex = 24;
 			this.label7.Text = "Bilhetes Adquiridos";
 			// 
-			// guardarDadosToolStripMenuItem
-			// 
-			this.guardarDadosToolStripMenuItem.Name = "guardarDadosToolStripMenuItem";
-			this.guardarDadosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-			this.guardarDadosToolStripMenuItem.Text = "Guardar Clientes";
-			this.guardarDadosToolStripMenuItem.Click += new System.EventHandler(this.guardarDadosToolStripMenuItem_Click);
-			// 
 			// ClientesForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -263,6 +254,5 @@
         private System.Windows.Forms.TextBox textBoxNBilhetes;
         private System.Windows.Forms.TextBox textBoxValorBilhetes;
         private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.ToolStripMenuItem guardarDadosToolStripMenuItem;
 	}
 }

@@ -27,6 +27,23 @@ namespace Projeto_DA.Controladores
             }
         }
 
+        public static List<Sessao> GetSessoesAtuais()
+        {
+			List<Sessao> sessoesAtuais = new List<Sessao>();
+
+			DateTime dataHoraAtual = DateTime.Now;
+
+			foreach (Sessao sessao in sessoesAtuais)
+			{
+				if (sessao.DataHoraInicio <= dataHoraAtual && sessao.DataHoraFim >= dataHoraAtual)
+				{
+					sessoesAtuais.Add(sessao);
+				}
+			}
+
+			return sessoesAtuais;
+		}
+
 		public static void AlterarSessao(int sessaoId, Filme novoFilme, Sala novaSala,DateTime novaDataHoraInicio, DateTime novaDataHoraFim, float novoPreco)
 		{
 			using (var db = new ApplicationContext())

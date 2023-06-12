@@ -38,8 +38,9 @@
 			this.funcionarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.alterarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.btCriarBilhete = new System.Windows.Forms.Button();
-			this.listBoxSessoesAtuais = new System.Windows.Forms.ListBox();
+			this.dataGridViewSessoesAtuais = new System.Windows.Forms.DataGridView();
 			this.menuStrip1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridViewSessoesAtuais)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// btCinema
@@ -137,22 +138,23 @@
 			this.btCriarBilhete.UseVisualStyleBackColor = true;
 			this.btCriarBilhete.Click += new System.EventHandler(this.btCriarBilhete_Click);
 			// 
-			// listBoxSessoesAtuais
+			// dataGridViewSessoesAtuais
 			// 
-			this.listBoxSessoesAtuais.FormattingEnabled = true;
-			this.listBoxSessoesAtuais.ItemHeight = 16;
-			this.listBoxSessoesAtuais.Location = new System.Drawing.Point(223, 96);
-			this.listBoxSessoesAtuais.Name = "listBoxSessoesAtuais";
-			this.listBoxSessoesAtuais.Size = new System.Drawing.Size(289, 228);
-			this.listBoxSessoesAtuais.TabIndex = 8;
-			this.listBoxSessoesAtuais.SelectedIndexChanged += new System.EventHandler(this.listBoxSessoesAtuais_SelectedIndexChanged);
+			this.dataGridViewSessoesAtuais.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridViewSessoesAtuais.Location = new System.Drawing.Point(242, 96);
+			this.dataGridViewSessoesAtuais.Name = "dataGridViewSessoesAtuais";
+			this.dataGridViewSessoesAtuais.RowHeadersWidth = 51;
+			this.dataGridViewSessoesAtuais.RowTemplate.Height = 24;
+			this.dataGridViewSessoesAtuais.Size = new System.Drawing.Size(289, 228);
+			this.dataGridViewSessoesAtuais.TabIndex = 9;
+			this.dataGridViewSessoesAtuais.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSessoesAtuais_CellContentClick);
 			// 
 			// MenuForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
-			this.Controls.Add(this.listBoxSessoesAtuais);
+			this.Controls.Add(this.dataGridViewSessoesAtuais);
 			this.Controls.Add(this.btCriarBilhete);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.btFuncionarios);
@@ -164,9 +166,9 @@
 			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "MenuForm";
 			this.Text = "CineGest";
-			this.Load += new System.EventHandler(this.MenuForm_Load);
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridViewSessoesAtuais)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -184,7 +186,7 @@
         private System.Windows.Forms.ToolStripMenuItem funcionarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem alterarToolStripMenuItem;
         private System.Windows.Forms.Button btCriarBilhete;
-        private System.Windows.Forms.ListBox listBoxSessoesAtuais;
-    }
+		private System.Windows.Forms.DataGridView dataGridViewSessoesAtuais;
+	}
 }
 

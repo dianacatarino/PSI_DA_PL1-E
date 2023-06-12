@@ -34,7 +34,6 @@ namespace Projeto_DA
 
         private void btAdicionarCliente_Click(object sender, EventArgs e)
         {
-
             ClienteController.AdicionarCliente(textBoxNome.Text, textBoxMorada.Text, int.Parse(textBoxNif.Text));
             ClientesRefresh();
         }
