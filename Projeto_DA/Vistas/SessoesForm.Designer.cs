@@ -46,6 +46,7 @@ namespace Projeto_DA
 			this.dateTimePickerFim = new System.Windows.Forms.DateTimePicker();
 			this.textBoxPreco = new System.Windows.Forms.TextBox();
 			this.label5 = new System.Windows.Forms.Label();
+			this.btRemoverSessao = new System.Windows.Forms.Button();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -87,7 +88,7 @@ namespace Projeto_DA
 			// 
 			// btAlterarSessoes
 			// 
-			this.btAlterarSessoes.Location = new System.Drawing.Point(601, 346);
+			this.btAlterarSessoes.Location = new System.Drawing.Point(548, 346);
 			this.btAlterarSessoes.Name = "btAlterarSessoes";
 			this.btAlterarSessoes.Size = new System.Drawing.Size(75, 23);
 			this.btAlterarSessoes.TabIndex = 18;
@@ -147,7 +148,7 @@ namespace Projeto_DA
 			this.dateTimePickerInicio.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.dateTimePickerInicio.Location = new System.Drawing.Point(459, 246);
 			this.dateTimePickerInicio.Name = "dateTimePickerInicio";
-			this.dateTimePickerInicio.Size = new System.Drawing.Size(217, 22);
+			this.dateTimePickerInicio.Size = new System.Drawing.Size(253, 22);
 			this.dateTimePickerInicio.TabIndex = 20;
 			// 
 			// comboBoxFilme
@@ -155,7 +156,7 @@ namespace Projeto_DA
 			this.comboBoxFilme.FormattingEnabled = true;
 			this.comboBoxFilme.Location = new System.Drawing.Point(505, 144);
 			this.comboBoxFilme.Name = "comboBoxFilme";
-			this.comboBoxFilme.Size = new System.Drawing.Size(171, 24);
+			this.comboBoxFilme.Size = new System.Drawing.Size(207, 24);
 			this.comboBoxFilme.TabIndex = 22;
 			// 
 			// comboBoxSala
@@ -163,7 +164,7 @@ namespace Projeto_DA
 			this.comboBoxSala.FormattingEnabled = true;
 			this.comboBoxSala.Location = new System.Drawing.Point(505, 183);
 			this.comboBoxSala.Name = "comboBoxSala";
-			this.comboBoxSala.Size = new System.Drawing.Size(171, 24);
+			this.comboBoxSala.Size = new System.Drawing.Size(207, 24);
 			this.comboBoxSala.TabIndex = 23;
 			// 
 			// dateTimePickerFim
@@ -172,14 +173,14 @@ namespace Projeto_DA
 			this.dateTimePickerFim.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
 			this.dateTimePickerFim.Location = new System.Drawing.Point(459, 274);
 			this.dateTimePickerFim.Name = "dateTimePickerFim";
-			this.dateTimePickerFim.Size = new System.Drawing.Size(217, 22);
+			this.dateTimePickerFim.Size = new System.Drawing.Size(253, 22);
 			this.dateTimePickerFim.TabIndex = 24;
 			// 
 			// textBoxPreco
 			// 
 			this.textBoxPreco.Location = new System.Drawing.Point(505, 318);
 			this.textBoxPreco.Name = "textBoxPreco";
-			this.textBoxPreco.Size = new System.Drawing.Size(171, 22);
+			this.textBoxPreco.Size = new System.Drawing.Size(207, 22);
 			this.textBoxPreco.TabIndex = 25;
 			// 
 			// label5
@@ -191,11 +192,22 @@ namespace Projeto_DA
 			this.label5.TabIndex = 26;
 			this.label5.Text = "Preço:";
 			// 
+			// btRemoverSessao
+			// 
+			this.btRemoverSessao.Location = new System.Drawing.Point(629, 346);
+			this.btRemoverSessao.Name = "btRemoverSessao";
+			this.btRemoverSessao.Size = new System.Drawing.Size(83, 23);
+			this.btRemoverSessao.TabIndex = 27;
+			this.btRemoverSessao.Text = "Remover";
+			this.btRemoverSessao.UseVisualStyleBackColor = true;
+			this.btRemoverSessao.Click += new System.EventHandler(this.btRemoverSessao_Click);
+			// 
 			// SessoesForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.btRemoverSessao);
 			this.Controls.Add(this.label5);
 			this.Controls.Add(this.textBoxPreco);
 			this.Controls.Add(this.dateTimePickerFim);
@@ -239,5 +251,6 @@ namespace Projeto_DA
 		private DateTimePicker dateTimePickerFim;
 		private TextBox textBoxPreco;
 		private Label label5;
+		private Button btRemoverSessao;
 	}
 }

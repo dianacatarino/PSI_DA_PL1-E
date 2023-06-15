@@ -41,5 +41,18 @@ namespace Projeto_DA.Controladores
 				}
 			}
         }
-    }
+
+		public static void RemoverCliente(int clienteId)
+		{
+			using (var db = new ApplicationContext())
+			{
+				var cliente = db.Clientes.Find(clienteId);
+				if (cliente != null)
+				{
+					db.Clientes.Remove(cliente);
+					db.SaveChanges();
+				}
+			}
+		}
+	}
 }

@@ -15,21 +15,24 @@ namespace Projeto_DA
     public partial class CinemaForm : Form
     {
 		private Projeto_DA.Modelos.ApplicationContext db;
+		private string nomeFuncionario;
 
-		public CinemaForm()
-        {
-            InitializeComponent();
+		public CinemaForm(string nomeFuncionario)
+		{
+			InitializeComponent();
+			this.nomeFuncionario = nomeFuncionario;
+			menuToolStripMenuItem.Text = nomeFuncionario;
 			db = new Projeto_DA.Modelos.ApplicationContext();
 			CinemaRefresh();
-            SalasRefresh();
+			SalasRefresh();
 		}
 
-        private void voltarToolStripMenuItem_Click(object sender, EventArgs e)
+		private void voltarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MenuForm menuForm = new MenuForm();
-            Hide();
-            menuForm.ShowDialog();
-        }
+			MenuForm menuForm = new MenuForm();
+			Hide();
+			menuForm.ShowDialog();
+		}
 
         private void btAdicionarCinema_Click(object sender, EventArgs e)
         {
@@ -109,6 +112,11 @@ namespace Projeto_DA
 			SalaController.AlterarSala(salaSelecionada.Id, novoNome, novaColunas, novaFilas);
 
 			SalasRefresh();
+		}
+
+		private void CinemaForm_Load(object sender, EventArgs e)
+		{
+			menuToolStripMenuItem.Text = nomeFuncionario;
 		}
 	}
 }

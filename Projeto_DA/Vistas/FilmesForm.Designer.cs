@@ -42,12 +42,13 @@
 			this.voltarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.textBoxDuracao = new System.Windows.Forms.TextBox();
 			this.comboBoxCategoria = new System.Windows.Forms.ComboBox();
+			this.btRemoverFilme = new System.Windows.Forms.Button();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// btAlterarFilme
 			// 
-			this.btAlterarFilme.Location = new System.Drawing.Point(629, 265);
+			this.btAlterarFilme.Location = new System.Drawing.Point(571, 259);
 			this.btAlterarFilme.Name = "btAlterarFilme";
 			this.btAlterarFilme.Size = new System.Drawing.Size(75, 23);
 			this.btAlterarFilme.TabIndex = 17;
@@ -57,7 +58,7 @@
 			// 
 			// btAdicionarFilme
 			// 
-			this.btAdicionarFilme.Location = new System.Drawing.Point(527, 265);
+			this.btAdicionarFilme.Location = new System.Drawing.Point(484, 259);
 			this.btAdicionarFilme.Name = "btAdicionarFilme";
 			this.btAdicionarFilme.Size = new System.Drawing.Size(81, 23);
 			this.btAdicionarFilme.TabIndex = 16;
@@ -68,7 +69,7 @@
 			// label4
 			// 
 			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(452, 221);
+			this.label4.Location = new System.Drawing.Point(444, 219);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(69, 16);
 			this.label4.TabIndex = 15;
@@ -77,7 +78,7 @@
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(459, 177);
+			this.label3.Location = new System.Drawing.Point(451, 177);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(62, 16);
 			this.label3.TabIndex = 14;
@@ -96,7 +97,7 @@
 			// 
 			this.textBoxNomeFilme.Location = new System.Drawing.Point(518, 136);
 			this.textBoxNomeFilme.Name = "textBoxNomeFilme";
-			this.textBoxNomeFilme.Size = new System.Drawing.Size(186, 22);
+			this.textBoxNomeFilme.Size = new System.Drawing.Size(201, 22);
 			this.textBoxNomeFilme.TabIndex = 10;
 			// 
 			// label1
@@ -121,7 +122,7 @@
 			// checkBoxAtivo
 			// 
 			this.checkBoxAtivo.AutoSize = true;
-			this.checkBoxAtivo.Location = new System.Drawing.Point(456, 265);
+			this.checkBoxAtivo.Location = new System.Drawing.Point(676, 215);
 			this.checkBoxAtivo.Name = "checkBoxAtivo";
 			this.checkBoxAtivo.Size = new System.Drawing.Size(59, 20);
 			this.checkBoxAtivo.TabIndex = 19;
@@ -158,21 +159,33 @@
 			// 
 			this.textBoxDuracao.Location = new System.Drawing.Point(518, 174);
 			this.textBoxDuracao.Name = "textBoxDuracao";
-			this.textBoxDuracao.Size = new System.Drawing.Size(186, 22);
+			this.textBoxDuracao.Size = new System.Drawing.Size(201, 22);
 			this.textBoxDuracao.TabIndex = 22;
 			// 
 			// comboBoxCategoria
 			// 
 			this.comboBoxCategoria.FormattingEnabled = true;
-			this.comboBoxCategoria.Location = new System.Drawing.Point(518, 218);
+			this.comboBoxCategoria.Location = new System.Drawing.Point(518, 212);
 			this.comboBoxCategoria.Name = "comboBoxCategoria";
-			this.comboBoxCategoria.Size = new System.Drawing.Size(186, 24);
+			this.comboBoxCategoria.Size = new System.Drawing.Size(152, 24);
 			this.comboBoxCategoria.TabIndex = 23;
+			// 
+			// btRemoverFilme
+			// 
+			this.btRemoverFilme.Location = new System.Drawing.Point(652, 259);
+			this.btRemoverFilme.Name = "btRemoverFilme";
+			this.btRemoverFilme.Size = new System.Drawing.Size(83, 23);
+			this.btRemoverFilme.TabIndex = 26;
+			this.btRemoverFilme.Text = "Remover";
+			this.btRemoverFilme.UseVisualStyleBackColor = true;
+			this.btRemoverFilme.Click += new System.EventHandler(this.btRemoverFilme_Click);
+			// 
 			// FilmesForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.btRemoverFilme);
 			this.Controls.Add(this.comboBoxCategoria);
 			this.Controls.Add(this.textBoxDuracao);
 			this.Controls.Add(this.checkBoxAtivo);
@@ -212,5 +225,6 @@
         private System.Windows.Forms.ToolStripMenuItem voltarToolStripMenuItem;
 		private System.Windows.Forms.TextBox textBoxDuracao;
 		private System.Windows.Forms.ComboBox comboBoxCategoria;
+		private System.Windows.Forms.Button btRemoverFilme;
 	}
 }

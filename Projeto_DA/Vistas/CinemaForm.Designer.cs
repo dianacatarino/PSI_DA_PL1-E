@@ -163,7 +163,7 @@
 			// voltarToolStripMenuItem
 			// 
 			this.voltarToolStripMenuItem.Name = "voltarToolStripMenuItem";
-			this.voltarToolStripMenuItem.Size = new System.Drawing.Size(131, 26);
+			this.voltarToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
 			this.voltarToolStripMenuItem.Text = "Voltar";
 			this.voltarToolStripMenuItem.Click += new System.EventHandler(this.voltarToolStripMenuItem_Click);
 			// 
@@ -283,6 +283,7 @@
 			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "CinemaForm";
 			this.Text = "Cinema";
+			this.Load += new System.EventHandler(this.CinemaForm_Load);
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
 			this.ResumeLayout(false);

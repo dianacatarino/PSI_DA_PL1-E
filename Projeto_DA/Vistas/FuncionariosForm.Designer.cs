@@ -43,6 +43,7 @@
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.voltarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.btRemoverFuncionario = new System.Windows.Forms.Button();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -58,7 +59,7 @@
 			// 
 			// btAlterarFuncionario
 			// 
-			this.btAlterarFuncionario.Location = new System.Drawing.Point(610, 299);
+			this.btAlterarFuncionario.Location = new System.Drawing.Point(556, 299);
 			this.btAlterarFuncionario.Name = "btAlterarFuncionario";
 			this.btAlterarFuncionario.Size = new System.Drawing.Size(75, 23);
 			this.btAlterarFuncionario.TabIndex = 33;
@@ -68,7 +69,7 @@
 			// 
 			// btAdicionarFuncionario
 			// 
-			this.btAdicionarFuncionario.Location = new System.Drawing.Point(512, 299);
+			this.btAdicionarFuncionario.Location = new System.Drawing.Point(458, 299);
 			this.btAdicionarFuncionario.Name = "btAdicionarFuncionario";
 			this.btAdicionarFuncionario.Size = new System.Drawing.Size(92, 23);
 			this.btAdicionarFuncionario.TabIndex = 32;
@@ -107,21 +108,21 @@
 			// 
 			this.textBoxSalario.Location = new System.Drawing.Point(513, 219);
 			this.textBoxSalario.Name = "textBoxSalario";
-			this.textBoxSalario.Size = new System.Drawing.Size(165, 22);
+			this.textBoxSalario.Size = new System.Drawing.Size(207, 22);
 			this.textBoxSalario.TabIndex = 28;
 			// 
 			// textBoxMorada
 			// 
 			this.textBoxMorada.Location = new System.Drawing.Point(513, 178);
 			this.textBoxMorada.Name = "textBoxMorada";
-			this.textBoxMorada.Size = new System.Drawing.Size(165, 22);
+			this.textBoxMorada.Size = new System.Drawing.Size(207, 22);
 			this.textBoxMorada.TabIndex = 27;
 			// 
 			// textBoxNome
 			// 
 			this.textBoxNome.Location = new System.Drawing.Point(513, 140);
 			this.textBoxNome.Name = "textBoxNome";
-			this.textBoxNome.Size = new System.Drawing.Size(165, 22);
+			this.textBoxNome.Size = new System.Drawing.Size(207, 22);
 			this.textBoxNome.TabIndex = 26;
 			// 
 			// label1
@@ -137,7 +138,7 @@
 			// 
 			this.textBoxFuncao.Location = new System.Drawing.Point(513, 261);
 			this.textBoxFuncao.Name = "textBoxFuncao";
-			this.textBoxFuncao.Size = new System.Drawing.Size(165, 22);
+			this.textBoxFuncao.Size = new System.Drawing.Size(207, 22);
 			this.textBoxFuncao.TabIndex = 35;
 			// 
 			// label5
@@ -175,11 +176,22 @@
 			this.voltarToolStripMenuItem.Text = "Voltar";
 			this.voltarToolStripMenuItem.Click += new System.EventHandler(this.voltarToolStripMenuItem_Click);
 			// 
+			// btRemoverFuncionario
+			// 
+			this.btRemoverFuncionario.Location = new System.Drawing.Point(637, 299);
+			this.btRemoverFuncionario.Name = "btRemoverFuncionario";
+			this.btRemoverFuncionario.Size = new System.Drawing.Size(83, 23);
+			this.btRemoverFuncionario.TabIndex = 38;
+			this.btRemoverFuncionario.Text = "Remover";
+			this.btRemoverFuncionario.UseVisualStyleBackColor = true;
+			this.btRemoverFuncionario.Click += new System.EventHandler(this.btRemoverFuncionario_Click);
+			// 
 			// FuncionariosForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.btRemoverFuncionario);
 			this.Controls.Add(this.label5);
 			this.Controls.Add(this.textBoxFuncao);
 			this.Controls.Add(this.listBoxFuncionarios);
@@ -196,6 +208,7 @@
 			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "FuncionariosForm";
 			this.Text = "Funcionarios";
+			this.Load += new System.EventHandler(this.FuncionariosForm_Load);
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
 			this.ResumeLayout(false);
@@ -219,5 +232,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem voltarToolStripMenuItem;
-    }
+		private System.Windows.Forms.Button btRemoverFuncionario;
+	}
 }

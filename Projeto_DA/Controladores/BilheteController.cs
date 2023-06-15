@@ -9,11 +9,13 @@ namespace Projeto_DA.Controladores
 {
     internal class BilheteController
     {
-        public static void AdicionarBilhete(string lugar, string estado)
+        public static void AdicionarBilhete(string lugar, string estado, Cliente cliente,
+            Funcionario funcionario, Sessao sessao)
         {
             using (var db = new ApplicationContext())
             {
-                var bilhete = new Bilhete { Lugar = lugar, Estado = estado};
+                var bilhete = new Bilhete { Lugar = lugar, Estado = estado, Cliente = cliente,
+                Funcionario = funcionario, Sessao = sessao};
                 db.Bilhetes.Add(bilhete);
                 db.SaveChanges();
             }

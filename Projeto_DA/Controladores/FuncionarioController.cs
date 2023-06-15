@@ -43,22 +43,17 @@ namespace Projeto_DA.Controladores
 			}
 		}
 
-		public static bool EntrarFuncionario(Funcionario funcionario)
-		{
-			using (var db = new Projeto_DA.Modelos.ApplicationContext())
-			{
-				Funcionario funcionarioAutenticado = db.Funcionarios.FirstOrDefault(f => f.Nome == funcionario.Nome);
-
-				if (funcionarioAutenticado != null)
-				{
-					if (funcionario.Nome == funcionarioAutenticado.Nome)
-					{
-						return true;
-					}
+        public static void RemoverFuncionario(int funcionarioId)
+        {
+            using (var db = new ApplicationContext())
+            {
+                var funcionario = db.Funcionarios.Find(funcionarioId);
+				if (funcionario != null)
+                {
+					db.Funcionarios.Remove(funcionario);
+					db.SaveChanges();
 				}
-			}
-
-			return false;
-		}
+            }
+        }
 	}
 }

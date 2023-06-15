@@ -14,40 +14,82 @@ namespace Projeto_DA.Vistas
 {
 	public partial class AlterarForm : Form
 	{
-		public AlterarForm()
+		private Funcionario funcionarioSelecionado;
+
+		public AlterarForm(Funcionario funcionario)
 		{
 			InitializeComponent();
+			funcionarioSelecionado = funcionario;
 		}
 
 		private void AlterarForm_Load(object sender, EventArgs e)
 		{
-			var funcionarios = FuncionarioController.GetFuncionarios();
+			// Carrega os funcionários existentes na ComboBox
+			CarregarFuncionarios();
 
-			comboBoxFuncionario.DataSource = funcionarios;
+			// Seleciona o funcionário atual na ComboBox
+			comboBoxFuncionario.SelectedItem = funcionarioSelecionado;
+		}
+
+		private void CarregarFuncionarios()
+		{
+			List<Funcionario> funcionarios = FuncionarioController.GetFuncionarios();
+
+			comboBoxFuncionario.Items.Clear();
 			comboBoxFuncionario.DisplayMember = "Nome";
+
+			foreach (var funcionario in funcionarios)
+			{
+				comboBoxFuncionario.Items.Add(funcionario);
+			}
+		}
+
+		private void comboBoxNome_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			// Obtém o funcionário selecionado na ComboBox
+			funcionarioSelecionado = (Funcionario)comboBoxFuncionario.SelectedItem;
 		}
 
 		private void buttonEntrar_Click(object sender, EventArgs e)
 		{
-			if (comboBoxFuncionario.SelectedItem != null)
+			string nomeFuncionario = comboBoxFuncionario.Text;
+
+			// Verifica se o nome do funcionário está preenchido
+			if (!string.IsNullOrEmpty(nomeFuncionario))
 			{
-				Funcionario funcionarioSelecionado = (Funcionario)comboBoxFuncionario.SelectedItem;
+				// Obtém o funcionário pelo nome
+				Funcionario funcionario = FuncionarioController.GetFuncionarios()
+					.FirstOrDefault(f => f.Nome.Equals(nomeFuncionario, StringComparison.OrdinalIgnoreCase));
 
-				// Autentique o funcionário
-				if (FuncionarioController.EntrarFuncionario(funcionarioSelecionado))
+				if (funcionario != null)
 				{
-					// Funcionário autenticado com sucesso, abra o formulário principal
-					MenuForm menuForm = new MenuForm();
-					menuForm.AtualizarNomeFuncionario(funcionarioSelecionado);
-					menuForm.Show();
+					// Exibe uma mensagem de sucesso
+					MessageBox.Show("Funcionário autenticado com sucesso!");
 
-					this.Close();
+					// Cria uma instância do MenuForm
+					MenuForm menuForm = new MenuForm();
+
+					// Atualiza o nome do funcionário no MenuForm
+					menuForm.AtualizarNomeFuncionario(funcionario);
+
+					// Oculta o formulário atual
+					Hide();
+
+					// Exibe o MenuForm
+					menuForm.Show();
 				}
 				else
 				{
-					MessageBox.Show("Funcionário não autenticado. Verifique suas credenciais.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					// Exibe uma mensagem de erro se o funcionário não for encontrado
+					MessageBox.Show("Funcionário não encontrado. Verifique o nome e tente novamente.");
 				}
+			}
+			else
+			{
+				// Exibe uma mensagem de erro se o nome do funcionário estiver em branco
+				MessageBox.Show("Por favor, informe o nome do funcionário.");
 			}
 		}
 	}
 }
+

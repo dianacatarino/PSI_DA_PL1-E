@@ -60,5 +60,18 @@ namespace Projeto_DA.Controladores
 				}
 			}
 		}
+
+		public static void RemoverSessao(int sessaoId)
+		{
+			using (var db = new ApplicationContext())
+			{
+				var sessao = db.Sessoes.Find(sessaoId);
+				if (sessao != null)
+				{
+					db.Sessoes.Remove(sessao);
+					db.SaveChanges();
+				}
+			}
+		}
 	}
 }

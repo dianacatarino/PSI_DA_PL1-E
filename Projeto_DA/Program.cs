@@ -10,10 +10,12 @@ namespace Projeto_DA
 {
     internal static class Program
     {
-        /// <summary>
-        /// Ponto de entrada principal para o aplicativo.
-        /// </summary>
-        [STAThread]
+		// Propriedade estática para armazenar o funcionário autenticado
+		public static Funcionario FuncionarioAutenticado { get; set; }
+		/// <summary>
+		/// Ponto de entrada principal para o aplicativo.
+		/// </summary>
+		[STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();

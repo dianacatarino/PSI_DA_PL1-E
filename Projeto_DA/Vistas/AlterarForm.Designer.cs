@@ -38,7 +38,7 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(165, 48);
+			this.label1.Location = new System.Drawing.Point(173, 48);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(119, 16);
 			this.label1.TabIndex = 0;
@@ -47,7 +47,7 @@
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(81, 89);
+			this.label2.Location = new System.Drawing.Point(98, 84);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(47, 16);
 			this.label2.TabIndex = 3;
@@ -55,7 +55,7 @@
 			// 
 			// buttonEntrar
 			// 
-			this.buttonEntrar.Location = new System.Drawing.Point(290, 86);
+			this.buttonEntrar.Location = new System.Drawing.Point(192, 111);
 			this.buttonEntrar.Name = "buttonEntrar";
 			this.buttonEntrar.Size = new System.Drawing.Size(75, 23);
 			this.buttonEntrar.TabIndex = 5;
@@ -66,7 +66,7 @@
 			// comboBoxFuncionario
 			// 
 			this.comboBoxFuncionario.FormattingEnabled = true;
-			this.comboBoxFuncionario.Location = new System.Drawing.Point(134, 86);
+			this.comboBoxFuncionario.Location = new System.Drawing.Point(151, 81);
 			this.comboBoxFuncionario.Name = "comboBoxFuncionario";
 			this.comboBoxFuncionario.Size = new System.Drawing.Size(150, 24);
 			this.comboBoxFuncionario.TabIndex = 6;

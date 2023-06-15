@@ -16,67 +16,68 @@ namespace Projeto_DA
 {
     public partial class MenuForm : Form
     {
-		private Funcionario funcionarioAutenticado;
-		public static string NomeFuncionario { get; set; }
+		private string funcionarioAutenticado;
+
 		public MenuForm()
-        {
-            InitializeComponent();
+		{
+			InitializeComponent();
+			funcionarioToolStripMenuItem.Text = funcionarioAutenticado;
 		}
 
 		public void AtualizarNomeFuncionario(Funcionario funcionario)
 		{
-			funcionarioAutenticado = funcionario;
-			funcionarioToolStripMenuItem.Text = funcionarioAutenticado.Nome;
+			funcionarioAutenticado = funcionario.Nome;
+			funcionarioToolStripMenuItem.Text = funcionarioAutenticado;
 		}
 
 		private void btCinema_Click(object sender, EventArgs e)
         {
-            CinemaForm cinemaform = new CinemaForm();
-            Hide();
-            cinemaform.ShowDialog();
-        }
+			CinemaForm cinemaform = new CinemaForm(funcionarioAutenticado);
+			Hide();
+			cinemaform.ShowDialog();
+		}
 
         private void btFilmes_Click(object sender, EventArgs e)
         {
-            FilmesForm filmesform = new FilmesForm();
+            FilmesForm filmesform = new FilmesForm(funcionarioAutenticado);
             Hide();
             filmesform.ShowDialog();
         }
 
         private void btSessoes_Click(object sender, EventArgs e)
         {
-            SessoesForm sessoesform = new SessoesForm();
+            SessoesForm sessoesform = new SessoesForm(funcionarioAutenticado);
             Hide();
             sessoesform.ShowDialog();
         }
 
         private void btClientes_Click(object sender, EventArgs e)
         {
-            ClientesForm clientesForm = new ClientesForm();
+            ClientesForm clientesForm = new ClientesForm(funcionarioAutenticado);
             Hide();
             clientesForm.ShowDialog();
         }
 
         private void btFuncionarios_Click(object sender, EventArgs e)
         {
-            FuncionariosForm funcionariosform = new FuncionariosForm();
+            FuncionariosForm funcionariosform = new FuncionariosForm(funcionarioAutenticado);
             Hide();
             funcionariosform.ShowDialog();
         }
 
-        private void btCriarBilhete_Click(object sender, EventArgs e)
-        {
-            AtendimentoForm atendimentosform = new AtendimentoForm();
-            Hide();
-            atendimentosform.ShowDialog();
-        }
+		private void btCriarBilhete_Click(object sender, EventArgs e)
+		{
+			AtendimentoForm atendimentosform = new AtendimentoForm(funcionarioAutenticado);
+			Hide();
+			atendimentosform.ShowDialog();
+		}
 
-        private void alterarToolStripMenuItem_Click(object sender, EventArgs e)
+		private void alterarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AlterarForm alterarform = new AlterarForm();
-            Hide();
-            alterarform.ShowDialog();
-        }
+			AlterarForm alterarform = new AlterarForm(Program.FuncionarioAutenticado);
+			Hide();
+			alterarform.ShowDialog();
+		}
 
 		private void dataGridViewSessoesAtuais_CellContentClick(object sender, DataGridViewCellEventArgs e)
 		{

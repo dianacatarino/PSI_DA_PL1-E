@@ -17,10 +17,13 @@ namespace Projeto_DA
     public partial class ClientesForm : Form
     {
 		private Projeto_DA.Modelos.ApplicationContext db;
+		private string nomeFuncionario;
 
-		public ClientesForm()
+		public ClientesForm(string nomeFuncionario)
         {
             InitializeComponent();
+			this.nomeFuncionario = nomeFuncionario;
+			menuToolStripMenuItem.Text = nomeFuncionario;
 			db = new Projeto_DA.Modelos.ApplicationContext();
 			ClientesRefresh();
 		}
@@ -80,30 +83,27 @@ namespace Projeto_DA
 			ClientesRefresh();
 		}
 
-		private void guardarDadosToolStripMenuItem_Click(object sender, EventArgs e)
+		private void btRemoverCliente_Click(object sender, EventArgs e)
 		{
-			SaveFileDialog sfd = new SaveFileDialog();
-			sfd.FileName = "dados_clientes.bin";
-			sfd.Filter = "Dados binários | *.bin";
-
-			DialogResult dialogResult = sfd.ShowDialog();
-			if (dialogResult == DialogResult.OK)
+			if (listBoxClientes.SelectedItem == null)
 			{
-				GuardarDadosBinarios(sfd.FileName);
+				MessageBox.Show("Selecione um cliente para remover.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
+
+			Cliente clienteSelecionado = (Cliente)listBoxClientes.SelectedItem;
+
+			DialogResult result = MessageBox.Show($"Tem certeza que deseja remover o cliente {clienteSelecionado.Nome}?", "Confirmar Remoção", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+			if (result == DialogResult.Yes)
+			{
+				ClienteController.RemoverCliente(clienteSelecionado.Id);
+				ClientesRefresh();
 			}
 		}
 
-		private void GuardarDadosBinarios(string fileName)
+		private void ClientesForm_Load(object sender, EventArgs e)
 		{
-			List<Cliente> listaClientes =
-				listBoxClientes.Items.Cast<Cliente>().ToList();
-
-			FileStream fs = new FileStream(fileName, FileMode.Create, FileAccess.Write);
-
-			BinaryFormatter bf = new BinaryFormatter();
-			bf.Serialize(fs, listaClientes);
-
-			fs.Close();
+			menuToolStripMenuItem.Text = nomeFuncionario;
 		}
 	}
 }

@@ -15,9 +15,12 @@ namespace Projeto_DA
     public partial class FilmesForm : Form
     {
 		private Projeto_DA.Modelos.ApplicationContext db;
-		public FilmesForm()
+		private string nomeFuncionario;
+		public FilmesForm(string nomeFuncionario)
         {
             InitializeComponent();
+			this.nomeFuncionario = nomeFuncionario;
+			menuToolStripMenuItem.Text = nomeFuncionario;
 			db = new Projeto_DA.Modelos.ApplicationContext();
 			FilmesRefresh();
 		}
@@ -37,11 +40,6 @@ namespace Projeto_DA
 			if (categoria == null)
 			{
 				categoria = db.Categorias.FirstOrDefault(c => c.Nome == nomeCategoria);
-			}
-
-			if (categoria == null)
-			{
-				categoria = new Categoria { Nome = nomeCategoria };
 			}
 
 			FilmeController.AdicionarFilme(textBoxNomeFilme.Text, TimeSpan.Parse(textBoxDuracao.Text),
@@ -99,20 +97,32 @@ namespace Projeto_DA
 
 		private void FilmesForm_Load(object sender, EventArgs e)
 		{
-			if (comboBoxCategoria.Items.Count == 0)
+			menuToolStripMenuItem.Text = nomeFuncionario;
+			comboBoxCategoria.DisplayMember = "Nome";
+			CarregarCategorias();
+		}
+
+		private void CarregarCategorias()
+		{
+			var categorias = db.Categorias.ToList();
+			comboBoxCategoria.DataSource = categorias;
+		}
+
+		private void btRemoverFilme_Click(object sender, EventArgs e)
+		{
+			if (listBoxFilmes.SelectedItem == null)
 			{
-				var categorias = CategoriaController.GetCategorias();
+				MessageBox.Show("Selecione um filme para remover.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
 
-				comboBoxCategoria.Items.Clear();
-				comboBoxCategoria.DisplayMember = "Nome";
+			Filme filmeSelecionado = (Filme)listBoxFilmes.SelectedItem;
 
-				foreach (var categoria in categorias)
-				{
-					if (!comboBoxCategoria.Items.Contains(categoria))
-					{
-						comboBoxCategoria.Items.Add(categoria);
-					}
-				}
+			DialogResult result = MessageBox.Show($"Tem certeza que deseja remover o filme {filmeSelecionado.Nome}?", "Confirmar Remoção", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+			if (result == DialogResult.Yes)
+			{
+				FilmeController.RemoverFilme(filmeSelecionado.Id);
+				FilmesRefresh();
 			}
 		}
 	}

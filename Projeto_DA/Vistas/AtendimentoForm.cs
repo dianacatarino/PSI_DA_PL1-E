@@ -18,13 +18,17 @@ namespace Projeto_DA
     {
 		public string Sessao;
 		private Projeto_DA.Modelos.ApplicationContext db;
-		public AtendimentoForm()
+		private string nomeFuncionario;
+
+		public AtendimentoForm(string nomeFuncionario)
         {
             InitializeComponent();
+			this.nomeFuncionario = nomeFuncionario;
+			menuToolStripMenuItem.Text = nomeFuncionario;
 			db = new Projeto_DA.Modelos.ApplicationContext();
 		}
 
-        private void voltarToolStripMenuItem_Click(object sender, EventArgs e)
+		private void voltarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MenuForm menuForm = new MenuForm();
             Hide();
@@ -67,30 +71,7 @@ namespace Projeto_DA
 
 			if (sala != null)
 			{
-				int colunas = sala.Colunas;
-				int filas = sala.Filas;
-
-				dataGridViewLugares.Rows.Clear();
-				dataGridViewLugares.Columns.Clear();
-
-				for (int i = 1; i <= colunas; i++)
-				{
-					dataGridViewLugares.Columns.Add($"Coluna{i}", $"Coluna {i}");
-				}
-
-				for (int j = 1; j <= filas; j++)
-				{
-					int rowIndex = dataGridViewLugares.Rows.Add();
-					dataGridViewLugares.Rows[rowIndex].HeaderCell.Value = $"Fila {j}";
-
-					for (int i = 1; i <= colunas; i++)
-					{
-						Image imagem = GerarImagem(sala, i, j);
-						DataGridViewImageCell cell = new DataGridViewImageCell();
-						cell.Value = imagem;
-						dataGridViewLugares[i - 1, rowIndex] = cell;
-					}
-				}
+				ExibirSala(sala);
 			}
 			else
 			{
@@ -98,9 +79,48 @@ namespace Projeto_DA
 			}
 		}
 
-		private Bitmap GerarImagem(Sala sala, int fila, int coluna)
+		private void ExibirSala(Sala sala)
 		{
-			string caminhoImagem = "E:\\PSI\\2º Semestre\\DA\\Projeto\\img\\greyiconcinema.png";
+			int colunas = sala.Colunas;
+			int filas = sala.Filas;
+
+			dataGridViewLugares.Rows.Clear();
+			dataGridViewLugares.Columns.Clear();
+
+			for (int i = 1; i <= colunas; i++)
+			{
+				dataGridViewLugares.Columns.Add($"Coluna{i}", $"Coluna {i}");
+			}
+
+			for (int j = 1; j <= filas; j++)
+			{
+				int rowIndex = dataGridViewLugares.Rows.Add();
+				dataGridViewLugares.Rows[rowIndex].HeaderCell.Value = $"Fila {j}";
+
+				for (int i = 1; i <= colunas; i++)
+				{
+					bool lugarDisponivel = VerificarLugarDisponivel(sala, i, j);
+					Image imagem = GerarImagem(lugarDisponivel);
+					DataGridViewImageCell cell = new DataGridViewImageCell();
+					cell.Value = imagem;
+					dataGridViewLugares[i - 1, rowIndex] = cell;
+				}
+			}
+		}
+
+		private Image GerarImagem(bool lugarDisponivel)
+		{
+			string caminhoImagem;
+
+			if (lugarDisponivel)
+			{
+				caminhoImagem = "E:\\PSI\\2º Semestre\\DA\\Projeto\\Projeto_DA\\img\\greeniconcinema.png";
+			}
+			else
+			{
+				caminhoImagem = "E:\\PSI\\2º Semestre\\DA\\Projeto\\Projeto_DA\\img\\greyiconcinema.png";
+			}
+
 			Bitmap imagemOriginal = new Bitmap(caminhoImagem);
 
 			int larguraDesejada = 35;
@@ -115,8 +135,45 @@ namespace Projeto_DA
 			return imagemRedimensionada;
 		}
 
+		private bool VerificarLugarDisponivel(Sala sala, int coluna, int fila)
+		{
+			// Verificar se as coordenadas estão dentro dos limites da sala
+			if (coluna >= 1 && coluna <= sala.Colunas && fila >= 1 && fila <= sala.Filas)
+			{
+				// Obter a célula correspondente no DataGridView
+				DataGridViewCell cell = dataGridViewLugares[coluna - 1, fila - 1];
+
+				// Obter a imagem atual na célula
+				Image imagemAtual = (Image)cell.Value;
+
+				// Verificar se a imagem é cinza (ocupado)
+				if (imagemAtual == ImagemOcupado())
+				{
+					// Lugar está ocupado
+					return false;
+				}
+				else
+				{
+					// Lugar está disponível
+					return true;
+				}
+			}
+
+			// As coordenadas estão fora dos limites da sala, considerar como lugar indisponível
+			return false;
+		}
+
+		private Image ImagemOcupado()
+		{
+			string caminhoImagemCinza = "E:\\PSI\\2º Semestre\\DA\\Projeto\\Projeto_DA\\img\\greyiconcinema.png";
+			Image imagemCinza = Image.FromFile(caminhoImagemCinza);
+			return imagemCinza;
+		}
+
 		private void AtendimentoForm_Load(object sender, EventArgs e)
 		{
+			menuToolStripMenuItem.Text = nomeFuncionario;
+
 			if (comboBoxSalas.Items.Count == 0)
 			{
 				var salas = SalaController.GetSalas();
@@ -136,7 +193,48 @@ namespace Projeto_DA
 
 		private void btCriarBilheteCliente_Click(object sender, EventArgs e)
 		{
-			
+			if (listBoxClientes.SelectedItem == null)
+			{
+				MessageBox.Show("Selecione um cliente válido.");
+				return;
+			}
+
+			Cliente cliente = (Cliente)listBoxClientes.SelectedItem;
+
+			// Verificar se um lugar está selecionado no DataGridView
+			if (dataGridViewLugares.SelectedCells.Count == 0)
+			{
+				MessageBox.Show("Selecione um lugar válido.");
+				return;
+			}
+
+			// Obter as informações do lugar selecionado
+			DataGridViewCell selectedCell = dataGridViewLugares.SelectedCells[0];
+			int coluna = selectedCell.ColumnIndex + 1;
+			int fila = selectedCell.RowIndex + 1;
+
+			// Verificar se o lugar está disponível
+			Sala sala = SalaController.GetSala(comboBoxSalas.Text);
+			bool lugarDisponivel = VerificarLugarDisponivel(sala, coluna, fila);
+			if (!lugarDisponivel)
+			{
+				MessageBox.Show("O lugar selecionado está ocupado.");
+				return;
+			}
+
+			// Criar o bilhete com as informações
+			string lugar = $"Fila {fila}, Coluna {coluna}";
+			string estado = "Ativo";
+			//Funcionario funcionario = funcionarioAutenticado;
+			/*Sessao sessao = ObterSessao(); // Implemente a função ObterSessao() para obter a sessão correta
+
+			// Adicionar o bilhete utilizando o BilheteController
+			BilheteController.AdicionarBilhete(lugar, estado, cliente, funcionario, sessao);
+
+			MessageBox.Show("Bilhete criado com sucesso.");
+
+			// Atualizar a exibição da sala
+			ExibirSala(sala);*/
 		}
 
 		private void ExportarBilhete()

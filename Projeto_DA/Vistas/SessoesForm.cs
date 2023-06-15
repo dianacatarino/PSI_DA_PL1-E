@@ -15,9 +15,12 @@ namespace Projeto_DA
     public partial class SessoesForm : Form
     {
 		private Projeto_DA.Modelos.ApplicationContext db;
-		public SessoesForm()
+		private string nomeFuncionario;
+		public SessoesForm(string nomeFuncionario)
         {
             InitializeComponent();
+			this.nomeFuncionario = nomeFuncionario;
+			menuToolStripMenuItem.Text = nomeFuncionario;
 			db = new Projeto_DA.Modelos.ApplicationContext();
 			SessoesRefresh();
 		}
@@ -87,6 +90,7 @@ namespace Projeto_DA
 
 		private void SessoesForm_Load(object sender, EventArgs e)
 		{
+			menuToolStripMenuItem.Text = nomeFuncionario;
 			using (var db = new Projeto_DA.Modelos.ApplicationContext())
 			{
 				var filmes = db.Filmes.ToList();
@@ -107,6 +111,24 @@ namespace Projeto_DA
 				{
 					comboBoxSala.Items.Add(sala);
 				}
+			}
+		}
+
+		private void btRemoverSessao_Click(object sender, EventArgs e)
+		{
+			if (listBoxSessoes.SelectedItem == null)
+			{
+				MessageBox.Show("Selecione uma sessão para remover.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
+
+			Sessao sessaoSelecionado = (Sessao)listBoxSessoes.SelectedItem;
+
+			DialogResult result = MessageBox.Show($"Tem certeza que deseja remover a sessão {sessaoSelecionado.Id}?", "Confirmar Remoção", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+			if (result == DialogResult.Yes)
+			{
+				SessaoController.RemoverSessao(sessaoSelecionado.Id);
+				SessoesRefresh();
 			}
 		}
 	}

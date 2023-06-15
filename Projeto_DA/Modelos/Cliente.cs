@@ -7,7 +7,6 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace Projeto_DA.Modelos
 {
-	[Serializable]
 	public class Cliente: Pessoa
     {
         public int Id { get; set; }
@@ -17,7 +16,7 @@ namespace Projeto_DA.Modelos
 
         public override string ToString()
         {
-            return $"Nome: {base.Nome}, Morada: {base.Morada}, Nif: {NumFiscal}";
+            return $"{base.Nome}, {base.Morada}, {NumFiscal}";
         }
     }
 }

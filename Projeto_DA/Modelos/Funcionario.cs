@@ -14,7 +14,7 @@ namespace Projeto_DA.Modelos
 
         public List<Bilhete> Bilhetes { get; set; }
 
-        public override string ToString()
+		public override string ToString()
         {
             return $"{base.Nome}, {base.Morada}, {Salario}€, {Funcao}";
         }

@@ -46,6 +46,7 @@
 			this.textBoxNBilhetes = new System.Windows.Forms.TextBox();
 			this.textBoxValorBilhetes = new System.Windows.Forms.TextBox();
 			this.label7 = new System.Windows.Forms.Label();
+			this.btRemoverCliente = new System.Windows.Forms.Button();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -71,7 +72,7 @@
 			// voltarToolStripMenuItem
 			// 
 			this.voltarToolStripMenuItem.Name = "voltarToolStripMenuItem";
-			this.voltarToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+			this.voltarToolStripMenuItem.Size = new System.Drawing.Size(131, 26);
 			this.voltarToolStripMenuItem.Text = "Voltar";
 			this.voltarToolStripMenuItem.Click += new System.EventHandler(this.voltarToolStripMenuItem_Click);
 			// 
@@ -87,7 +88,7 @@
 			// 
 			// btAlterarCliente
 			// 
-			this.btAlterarCliente.Location = new System.Drawing.Point(605, 335);
+			this.btAlterarCliente.Location = new System.Drawing.Point(555, 335);
 			this.btAlterarCliente.Name = "btAlterarCliente";
 			this.btAlterarCliente.Size = new System.Drawing.Size(75, 23);
 			this.btAlterarCliente.TabIndex = 18;
@@ -97,7 +98,7 @@
 			// 
 			// btAdicionarCliente
 			// 
-			this.btAdicionarCliente.Location = new System.Drawing.Point(498, 335);
+			this.btAdicionarCliente.Location = new System.Drawing.Point(460, 335);
 			this.btAdicionarCliente.Name = "btAdicionarCliente";
 			this.btAdicionarCliente.Size = new System.Drawing.Size(92, 23);
 			this.btAdicionarCliente.TabIndex = 17;
@@ -184,14 +185,14 @@
 			// 
 			this.textBoxNBilhetes.Location = new System.Drawing.Point(538, 270);
 			this.textBoxNBilhetes.Name = "textBoxNBilhetes";
-			this.textBoxNBilhetes.Size = new System.Drawing.Size(52, 22);
+			this.textBoxNBilhetes.Size = new System.Drawing.Size(142, 22);
 			this.textBoxNBilhetes.TabIndex = 22;
 			// 
 			// textBoxValorBilhetes
 			// 
 			this.textBoxValorBilhetes.Location = new System.Drawing.Point(555, 302);
 			this.textBoxValorBilhetes.Name = "textBoxValorBilhetes";
-			this.textBoxValorBilhetes.Size = new System.Drawing.Size(55, 22);
+			this.textBoxValorBilhetes.Size = new System.Drawing.Size(125, 22);
 			this.textBoxValorBilhetes.TabIndex = 23;
 			// 
 			// label7
@@ -203,11 +204,22 @@
 			this.label7.TabIndex = 24;
 			this.label7.Text = "Bilhetes Adquiridos";
 			// 
+			// btRemoverCliente
+			// 
+			this.btRemoverCliente.Location = new System.Drawing.Point(636, 335);
+			this.btRemoverCliente.Name = "btRemoverCliente";
+			this.btRemoverCliente.Size = new System.Drawing.Size(83, 23);
+			this.btRemoverCliente.TabIndex = 25;
+			this.btRemoverCliente.Text = "Remover";
+			this.btRemoverCliente.UseVisualStyleBackColor = true;
+			this.btRemoverCliente.Click += new System.EventHandler(this.btRemoverCliente_Click);
+			// 
 			// ClientesForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.btRemoverCliente);
 			this.Controls.Add(this.label7);
 			this.Controls.Add(this.textBoxValorBilhetes);
 			this.Controls.Add(this.textBoxNBilhetes);
@@ -227,6 +239,7 @@
 			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "ClientesForm";
 			this.Text = "Clientes";
+			this.Load += new System.EventHandler(this.ClientesForm_Load);
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
 			this.ResumeLayout(false);
@@ -254,5 +267,6 @@
         private System.Windows.Forms.TextBox textBoxNBilhetes;
         private System.Windows.Forms.TextBox textBoxValorBilhetes;
         private System.Windows.Forms.Label label7;
+		private System.Windows.Forms.Button btRemoverCliente;
 	}
 }

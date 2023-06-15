@@ -52,5 +52,18 @@ namespace Projeto_DA.Controladores
 				}
 			}
 		}
+
+		public static void RemoverFilme(int filmeId)
+		{
+			using (var db = new ApplicationContext())
+			{
+				var filme = db.Filmes.Find(filmeId);
+				if (filme != null)
+				{
+					db.Filmes.Remove(filme);
+					db.SaveChanges();
+				}
+			}
+		}
 	}
 }

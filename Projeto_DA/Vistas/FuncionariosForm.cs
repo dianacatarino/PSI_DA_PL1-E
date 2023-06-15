@@ -15,10 +15,13 @@ namespace Projeto_DA.Vistas
     public partial class FuncionariosForm : Form
     {
 		private Projeto_DA.Modelos.ApplicationContext db;
+		private string nomeFuncionario;
 
-		public FuncionariosForm()
+		public FuncionariosForm(string nomeFuncionario)
         {
             InitializeComponent();
+			this.nomeFuncionario = nomeFuncionario;
+			menuToolStripMenuItem.Text = nomeFuncionario;
 			db = new Projeto_DA.Modelos.ApplicationContext();
 			FuncionariosRefresh();
 		}
@@ -77,6 +80,29 @@ namespace Projeto_DA.Vistas
 				novoSalario, novaFuncao);
 
 			FuncionariosRefresh();
+		}
+
+		private void btRemoverFuncionario_Click(object sender, EventArgs e)
+		{
+			if (listBoxFuncionarios.SelectedItem == null)
+			{
+				MessageBox.Show("Selecione um funcionário para remover.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
+
+			Funcionario funcionarioSelecionado = (Funcionario)listBoxFuncionarios.SelectedItem;
+
+			DialogResult result = MessageBox.Show($"Tem certeza que deseja remover o funcionário {funcionarioSelecionado.Nome}?", "Confirmar Remoção", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+			if (result == DialogResult.Yes)
+			{
+				FuncionarioController.RemoverFuncionario(funcionarioSelecionado.Id);
+				FuncionariosRefresh();
+			}
+		}
+
+		private void FuncionariosForm_Load(object sender, EventArgs e)
+		{
+			menuToolStripMenuItem.Text = nomeFuncionario;
 		}
 	}
 }
