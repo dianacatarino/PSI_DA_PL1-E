@@ -14,8 +14,9 @@ namespace Projeto_DA
 {
     public partial class CinemaForm : Form
     {
-		private Projeto_DA.Modelos.ApplicationContext db;
+		public string NomeFuncionario { get; private set; }
 		private string nomeFuncionario;
+		private Projeto_DA.Modelos.ApplicationContext db;
 
 		public CinemaForm(string nomeFuncionario)
 		{
@@ -29,7 +30,7 @@ namespace Projeto_DA
 
 		private void voltarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-			MenuForm menuForm = new MenuForm();
+			MenuForm menuForm = new MenuForm(nomeFuncionario);
 			Hide();
 			menuForm.ShowDialog();
 		}
@@ -66,10 +67,10 @@ namespace Projeto_DA
 			Cinema cinemaSelecionado = (Cinema)listBoxCinema.SelectedItem;
 
             string novoNome = textBoxNomeCinema.Text;
+			string novaMorada = textBoxMoradaCinema.Text;
             string novoEmail = textBoxEmailCinema.Text;
-            string novaMorada = textBoxMoradaCinema.Text;
-
-            CinemaController.AlterarCinema(cinemaSelecionado.Id, novoNome, novoEmail, novaMorada);
+            
+            CinemaController.AlterarCinema(cinemaSelecionado.Id, novoNome, novaMorada, novoEmail);
 
             CinemaRefresh();
         }

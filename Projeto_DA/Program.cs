@@ -18,9 +18,14 @@ namespace Projeto_DA
 		[STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MenuForm());
-        }
+			Application.EnableVisualStyles();
+			Application.SetCompatibleTextRenderingDefault(false);
+
+			// Defina o valor da propriedade FuncionarioAutenticado com base nas informações do funcionário autenticado
+			string nomeFuncionario = "Funcionário";
+			FuncionarioAutenticado = new Funcionario { Nome = nomeFuncionario };
+
+			Application.Run(new MenuForm(nomeFuncionario));
+		}
     }
 }

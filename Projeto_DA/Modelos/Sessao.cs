@@ -9,8 +9,7 @@ namespace Projeto_DA.Modelos
     public class Sessao
     {
         public int Id { get; set; }
-        public DateTime DataHoraInicio { get; set; }
-        public DateTime DataHoraFim { get; set; }
+        public DateTime DataHora { get; set; }
         public float Preco { get; set; }
 		public Filme Filme { get; set; }
         public Sala Sala { get; set; }
@@ -18,7 +17,7 @@ namespace Projeto_DA.Modelos
 
         public override string ToString()
         {
-            return $"{Id},{DataHoraInicio}, {DataHoraFim}, {Preco}";
+            return $"{Id},{DataHora}, {Preco}";
         }
     }
 }

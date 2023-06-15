@@ -14,8 +14,9 @@ namespace Projeto_DA.Vistas
 {
     public partial class FuncionariosForm : Form
     {
-		private Projeto_DA.Modelos.ApplicationContext db;
+		public string NomeFuncionario { get; private set; }
 		private string nomeFuncionario;
+		private Projeto_DA.Modelos.ApplicationContext db;
 
 		public FuncionariosForm(string nomeFuncionario)
         {
@@ -28,7 +29,7 @@ namespace Projeto_DA.Vistas
 
 		private void voltarToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			MenuForm menuForm = new MenuForm();
+			MenuForm menuForm = new MenuForm(nomeFuncionario);
 			Hide();
 			menuForm.ShowDialog();
 		}

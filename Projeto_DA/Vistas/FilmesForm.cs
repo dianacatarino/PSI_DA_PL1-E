@@ -14,8 +14,10 @@ namespace Projeto_DA
 {
     public partial class FilmesForm : Form
     {
-		private Projeto_DA.Modelos.ApplicationContext db;
+		public string NomeFuncionario { get; private set; }
 		private string nomeFuncionario;
+		public string Sessao;
+		private Projeto_DA.Modelos.ApplicationContext db;
 		public FilmesForm(string nomeFuncionario)
         {
             InitializeComponent();
@@ -27,7 +29,7 @@ namespace Projeto_DA
 
         private void voltarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MenuForm menuForm = new MenuForm();
+            MenuForm menuForm = new MenuForm(nomeFuncionario);
             Hide();
             menuForm.ShowDialog();
         }
@@ -37,13 +39,13 @@ namespace Projeto_DA
 			string nomeCategoria = comboBoxCategoria.Text;
 			Categoria categoria = CategoriaController.GetCategoria(nomeCategoria);
 
-			if (categoria == null)
+			if (categoria == null || categoria.Id == 0)
 			{
-				categoria = db.Categorias.FirstOrDefault(c => c.Nome == nomeCategoria);
+				MessageBox.Show("A categoria selecionada não existe.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
 			}
 
-			FilmeController.AdicionarFilme(textBoxNomeFilme.Text, TimeSpan.Parse(textBoxDuracao.Text),
-				categoria, checkBoxAtivo.Checked);
+			FilmeController.AdicionarFilme(textBoxNomeFilme.Text, TimeSpan.Parse(textBoxDuracao.Text), categoria, false);
 			FilmesRefresh();
 		}
 
@@ -52,14 +54,15 @@ namespace Projeto_DA
 			var filmes = FilmeController.GetFilmes();
 			listBoxFilmes.DataSource = null;
 			listBoxFilmes.DataSource = filmes;
+			listBoxFilmes.DisplayMember = "Categoria.Nome";
 		}
 
         private void listBoxFilmes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listBoxFilmes.SelectedIndex == -1)
-            {
-                return;
-            }
+			if (listBoxFilmes.SelectedIndex == -1)
+			{
+				return;
+			}
 
 			Filme filme = (Filme)listBoxFilmes.SelectedItem;
 			Categoria categoria = filme.Categoria;
@@ -67,15 +70,15 @@ namespace Projeto_DA
 			textBoxNomeFilme.Text = filme.Nome;
 			textBoxDuracao.Text = filme.Duracao.ToString();
 
-			if (categoria != null && comboBoxCategoria.Items.Contains(categoria))
+			if (categoria != null)
 			{
-				comboBoxCategoria.SelectedItem = categoria;
+				comboBoxCategoria.SelectedItem = categoria.Nome;
 			}
 
 			checkBoxAtivo.Checked = filme.Ativo;
 		}
 
-        private void btAlterarFilme_Click(object sender, EventArgs e)
+		private void btAlterarFilme_Click(object sender, EventArgs e)
 		{
 			if (listBoxFilmes.SelectedItem == null)
 			{
@@ -86,11 +89,11 @@ namespace Projeto_DA
 			Filme filmeSelecionado = (Filme)listBoxFilmes.SelectedItem;
 
 			string novoNome = textBoxNomeFilme.Text;
-			string novaDuracao = textBoxDuracao.Text;
-			Categoria novaCategoria = CategoriaController.GetCategoria(comboBoxCategoria.Text);
+			TimeSpan novaDuracao = TimeSpan.Parse(textBoxDuracao.Text);
+			Categoria novaCategoria = comboBoxCategoria.SelectedItem as Categoria;
 			bool novoAtivo = checkBoxAtivo.Checked;
 
-			FilmeController.AlterarFilme(filmeSelecionado.Id, novoNome, TimeSpan.Parse(novaDuracao), novaCategoria, novoAtivo);
+			FilmeController.AlterarFilme(filmeSelecionado.Id, novoNome, novaDuracao, novaCategoria, novoAtivo);
 
 			FilmesRefresh();
 		}
@@ -104,8 +107,9 @@ namespace Projeto_DA
 
 		private void CarregarCategorias()
 		{
-			var categorias = db.Categorias.ToList();
+			var categorias = CategoriaController.GetCategorias();
 			comboBoxCategoria.DataSource = categorias;
+			comboBoxCategoria.DisplayMember = "Nome";
 		}
 
 		private void btRemoverFilme_Click(object sender, EventArgs e)

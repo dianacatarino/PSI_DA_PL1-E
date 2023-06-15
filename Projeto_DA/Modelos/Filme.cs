@@ -18,6 +18,6 @@ namespace Projeto_DA.Modelos
         {
 			string categoriaNome = Categoria != null ? Categoria.Nome : "N/A";
 			return $"{Nome}, {Duracao}, {categoriaNome}, {Ativo}";
-        }
+		}
     }
 }

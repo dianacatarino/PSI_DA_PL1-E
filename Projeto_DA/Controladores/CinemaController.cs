@@ -28,7 +28,7 @@ namespace Projeto_DA.Controladores
             }
         }
 
-        public static void AlterarCinema(int cinemaId, string novoNome, string novoEmail, string novaMorada)
+        public static void AlterarCinema(int cinemaId, string novoNome, string novaMorada, string novoEmail)
         {
             using (var db = new ApplicationContext())
             {

@@ -14,10 +14,18 @@ namespace Projeto_DA.Controladores
         {
 			using (var db = new ApplicationContext())
 			{
+				// Verifica se a categoria já existe na base de dados
+				Categoria categoriaExistente = db.Categorias.FirstOrDefault(c => c.Id == categoria.Id);
+
+				if (categoriaExistente != null)
+				{
+					// Atualiza a referência para a categoria existente
+					categoria = categoriaExistente;
+				}
+
 				var filme = new Filme { Nome = nome, Duracao = duracao, Categoria = categoria, Ativo = ativo };
 				db.Filmes.Add(filme);
 				db.SaveChanges();
-				
 			}
 		}
 
@@ -37,17 +45,34 @@ namespace Projeto_DA.Controladores
 			}
 		}
 
-		public static void AlterarFilme(int filmeId, string novoNome, TimeSpan novaDuracao, Categoria novaCategoria, Boolean novoAtivo)
+		public static void AlterarFilme(int filmeId, string novoNome, TimeSpan novaDuracao, Categoria novaCategoria, bool novoAtivo)
 		{
 			using (var db = new ApplicationContext())
 			{
 				var filme = db.Filmes.Find(filmeId);
+
 				if (filme != null)
 				{
+					// Verifica se a categoria já existe na base de dados
+					Categoria categoriaExistente = db.Categorias.FirstOrDefault(c => c.Id == novaCategoria.Id);
+
+					if (categoriaExistente != null)
+					{
+						// Atualiza a referência para a categoria existente
+						filme.Categoria = categoriaExistente;
+					}
+					else
+					{
+						// Se a categoria não existir, carrega a categoria original do filme
+						db.Entry(filme).Reference(f => f.Categoria).Load();
+						filme.Categoria.Nome = novaCategoria.Nome;
+					}
+
+					// Atualiza os outros campos do filme
 					filme.Nome = novoNome;
 					filme.Duracao = novaDuracao;
-					filme.Categoria = novaCategoria;
 					filme.Ativo = novoAtivo;
+
 					db.SaveChanges();
 				}
 			}

@@ -16,10 +16,11 @@ namespace Projeto_DA
 {
     public partial class AtendimentoForm : Form
     {
+		public string NomeFuncionario { get; private set; }
+		private string nomeFuncionario;
 		public string Sessao;
 		private Projeto_DA.Modelos.ApplicationContext db;
-		private string nomeFuncionario;
-
+		
 		public AtendimentoForm(string nomeFuncionario)
         {
             InitializeComponent();
@@ -30,10 +31,10 @@ namespace Projeto_DA
 
 		private void voltarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MenuForm menuForm = new MenuForm();
-            Hide();
-            menuForm.ShowDialog();
-        }
+			MenuForm menuForm = new MenuForm(nomeFuncionario);
+			Hide();
+			menuForm.ShowDialog();
+		}
 
 		private void btCarregarCliente_Click(object sender, EventArgs e)
 		{
@@ -243,33 +244,42 @@ namespace Projeto_DA
 			{
 				return;
 			}
+
 			Cliente cliente = (Cliente)listBoxClientes.SelectedItem;
+			string nomeFicheiro = cliente.Nome + "_" + cliente.NumFiscal + ".txt";
 
-			string nomeFicheiro = cliente.Nome + "_" + cliente.Nif + ".txt";
-			FileStream fs = new FileStream(nomeFicheiro, FileMode.Create, FileAccess.Write);
-			StreamWriter sw = new StreamWriter(fs);
-
-			sw.WriteLine(cliente.Nome + " (" + cliente.Nif + ") ");
-			sw.WriteLine("____________________________________________________________________");
-
-			foreach (Compra compra in cliente.Compras)
+			using (StreamWriter sw = new StreamWriter(nomeFicheiro))
 			{
-				sw.WriteLine("Efetuada a: " + compra.GetDataHora().ToString("dd/MMMM/yyyy HH:mm:ss"));
-
-				foreach (LinhaCompra linha in compra.LinhasCompra)
-				{
-					sw.WriteLine("-" + linha.Valor + "€ " + linha.Descricao);
-
-				}
-				sw.WriteLine("Total: €" + compra.Total);
+				sw.WriteLine("Informações dos Bilhetes do Cliente: " + cliente.Nome + " (" + cliente.NumFiscal + ")");
 				sw.WriteLine("____________________________________________________________________");
-			}
-			sw.WriteLine("Total do Cliente: €" + cliente.Total);
+				sw.WriteLine();
 
-			sw.Close();
-			fs.Close();
+				foreach (Compra compra in cliente.Compras)
+				{
+					sw.WriteLine("Data e Hora da Compra: " + compra.GetDataHora().ToString("dd/MMMM/yyyy HH:mm:ss"));
+					sw.WriteLine("Filme: " + compra.Sessao.Filme.Nome);
+					sw.WriteLine("Data e Hora da Sessão: " + compra.Sessao.DataHoraInicio.ToString("dd/MMMM/yyyy HH:mm:ss"));
+					sw.WriteLine("Sala: " + compra.Sessao.Sala.Nome);
+					sw.WriteLine("Lugares:");
+
+					foreach (Lugar lugar in compra.Lugares)
+					{
+						sw.WriteLine("- Fila " + lugar.Fila + ", Coluna " + lugar.Coluna);
+					}
+
+					sw.WriteLine("Atendido por: " + FuncionarioAutenticado.Nome); // Certifique-se de que FuncionarioAutenticado é válido
+
+					sw.WriteLine("____________________________________________________________________");
+					sw.WriteLine();
+				}
+
+				sw.WriteLine("Total do Cliente: €" + cliente.Total);
+			}
+
+			MessageBox.Show("Bilhetes exportados com sucesso.");
 			*/
 		}
+
 
 		private void dataGridViewLugares_CellContentClick(object sender, DataGridViewCellEventArgs e)
 		{

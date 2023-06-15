@@ -9,15 +9,33 @@ namespace Projeto_DA.Controladores
 {
     internal class SessaoController
     {
-        public static void AdicionarSessao(Filme filme, Sala sala,DateTime datahorainicio, DateTime datahorafim, float preco)
+        public static void AdicionarSessao(Filme filme, Sala sala,DateTime datahora, float preco)
         {
-            using (var db = new ApplicationContext())
-            {
-                var sessao = new Sessao { Filme = filme, Sala = sala, DataHoraInicio = datahorainicio, DataHoraFim = datahorafim, Preco = preco};
-                db.Sessoes.Add(sessao);
-                db.SaveChanges();
-            }
-        }
+			using (var db = new ApplicationContext())
+			{
+				// Verifica se o filme já existe na base de dados
+				Filme filmeExistente = db.Filmes.FirstOrDefault(f => f.Id == filme.Id);
+
+				if (filmeExistente != null)
+				{
+					// Atualiza a referência para o filme existente
+					filme = filmeExistente;
+				}
+
+				// Verifica se a sala já existe na base de dados
+				Sala salaExistente = db.Salas.FirstOrDefault(s => s.Id == sala.Id);
+
+				if (salaExistente != null)
+				{
+					// Atualiza a referência para a sala existente
+					sala = salaExistente;
+				}
+
+				var sessao = new Sessao { Filme = filme, Sala = sala, DataHora = datahora, Preco = preco };
+				db.Sessoes.Add(sessao);
+				db.SaveChanges();
+			}
+		}
 
         public static List<Sessao> GetSessoes()
         {
@@ -35,7 +53,7 @@ namespace Projeto_DA.Controladores
 
 			foreach (Sessao sessao in sessoesAtuais)
 			{
-				if (sessao.DataHoraInicio <= dataHoraAtual && sessao.DataHoraFim >= dataHoraAtual)
+				if (sessao.DataHora <= dataHoraAtual)
 				{
 					sessoesAtuais.Add(sessao);
 				}
@@ -44,18 +62,41 @@ namespace Projeto_DA.Controladores
 			return sessoesAtuais;
 		}
 
-		public static void AlterarSessao(int sessaoId, Filme novoFilme, Sala novaSala,DateTime novaDataHoraInicio, DateTime novaDataHoraFim, float novoPreco)
+		public static void AlterarSessao(int sessaoId, Filme novoFilme, Sala novaSala,DateTime novaDataHora, float novoPreco)
 		{
 			using (var db = new ApplicationContext())
 			{
 				var sessao = db.Sessoes.Find(sessaoId);
 				if (sessao != null)
 				{
-					sessao.Filme = novoFilme;
-					sessao.Sala = novaSala;
-					sessao.DataHoraInicio = novaDataHoraInicio;
-					sessao.DataHoraFim = novaDataHoraFim;
-                    sessao.Preco = novoPreco;
+					// Verifica se o filme já existe na base de dados
+					Filme filmeExistente = db.Filmes.FirstOrDefault(f => f.Id == novoFilme.Id);
+
+					if (filmeExistente != null)
+					{
+						// Atualiza a referência para o filme existente
+						sessao.Filme = filmeExistente;
+					}
+					else
+					{
+						sessao.Filme = novoFilme;
+					}
+
+					// Verifica se a sala já existe na base de dados
+					Sala salaExistente = db.Salas.FirstOrDefault(s => s.Id == novaSala.Id);
+
+					if (salaExistente != null)
+					{
+						// Atualiza a referência para a sala existente
+						sessao.Sala = salaExistente;
+					}
+					else
+					{
+						sessao.Sala = novaSala;
+					}
+
+					sessao.DataHora = novaDataHora;
+					sessao.Preco = novoPreco;
 					db.SaveChanges();
 				}
 			}

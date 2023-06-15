@@ -67,7 +67,7 @@ namespace Projeto_DA.Vistas
 					MessageBox.Show("Funcionário autenticado com sucesso!");
 
 					// Cria uma instância do MenuForm
-					MenuForm menuForm = new MenuForm();
+					MenuForm menuForm = new MenuForm(nomeFuncionario);
 
 					// Atualiza o nome do funcionário no MenuForm
 					menuForm.AtualizarNomeFuncionario(funcionario);

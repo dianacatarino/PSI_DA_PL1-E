@@ -14,8 +14,9 @@ namespace Projeto_DA
 {
     public partial class SessoesForm : Form
     {
-		private Projeto_DA.Modelos.ApplicationContext db;
+		public string NomeFuncionario { get; private set; }
 		private string nomeFuncionario;
+		private Projeto_DA.Modelos.ApplicationContext db;
 		public SessoesForm(string nomeFuncionario)
         {
             InitializeComponent();
@@ -27,22 +28,21 @@ namespace Projeto_DA
 
         private void voltarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MenuForm menuForm = new MenuForm();
+            MenuForm menuForm = new MenuForm(nomeFuncionario);
             Hide();
             menuForm.ShowDialog();
         }
 
-        private void btAdicionarSessoes_Click(object sender, EventArgs e)
-        {
+		private void btAdicionarSessoes_Click(object sender, EventArgs e)
+		{
 			Filme filme = FilmeController.GetFilme(comboBoxFilme.Text);
 			Sala sala = SalaController.GetSala(comboBoxSala.Text);
 
-			SessaoController.AdicionarSessao(filme, sala, DateTime.Parse(dateTimePickerInicio.Text), 
-                DateTime.Parse(dateTimePickerFim.Text), float.Parse(textBoxPreco.Text));
-            SessoesRefresh();
-        }
+			SessaoController.AdicionarSessao(filme, sala, DateTime.Parse(dateTimePickerDataHora.Text), float.Parse(textBoxPreco.Text));
+			SessoesRefresh();
+		}
 
-        private void SessoesRefresh()
+		private void SessoesRefresh()
         {
             var sessao = SessaoController.GetSessoes();
             listBoxSessoes.DataSource = null;
@@ -60,10 +60,15 @@ namespace Projeto_DA
 			Filme filme = sessao.Filme;
 			Sala sala = sessao.Sala;
 
-			comboBoxFilme.Text = filme.Nome;
-			comboBoxSala.Text = sala.Nome;
-			dateTimePickerInicio.Text = sessao.DataHoraInicio.ToString();
-			dateTimePickerFim.Text = sessao.DataHoraFim.ToString();
+			if (filme != null)
+			{
+				comboBoxFilme.Text = filme.Nome;
+			}
+			if (sala != null)
+			{
+				comboBoxSala.Text = sala.Nome;
+			}
+			dateTimePickerDataHora.Text = sessao.DataHora.ToString();
 			textBoxPreco.Text = sessao.Preco.ToString();
 		}
         private void btAlterarSessoes_Click(object sender, EventArgs e)
@@ -78,12 +83,10 @@ namespace Projeto_DA
 
 			Filme novoFilme = FilmeController.GetFilme(comboBoxFilme.Text);
 			Sala novaSala = SalaController.GetSala(comboBoxSala.Text);
-            string novaDataHoraInicio = dateTimePickerInicio.Text;
-            string novaDataHoraFim = dateTimePickerFim.Text;
+            string novaDataHora = dateTimePickerDataHora.Text;
             string novoPreco = textBoxPreco.Text;
 
-			SessaoController.AlterarSessao(sessaoSelecionada.Id, novoFilme, novaSala, DateTime.Parse(novaDataHoraInicio),
-                DateTime.Parse(novaDataHoraFim), float.Parse(novoPreco));
+			SessaoController.AlterarSessao(sessaoSelecionada.Id, novoFilme, novaSala, DateTime.Parse(novaDataHora),float.Parse(novoPreco));
 
 			SessoesRefresh();
 		}
@@ -91,26 +94,17 @@ namespace Projeto_DA
 		private void SessoesForm_Load(object sender, EventArgs e)
 		{
 			menuToolStripMenuItem.Text = nomeFuncionario;
+
 			using (var db = new Projeto_DA.Modelos.ApplicationContext())
 			{
 				var filmes = db.Filmes.ToList();
-                var salas = db.Salas.ToList();
+				var salas = db.Salas.ToList();
 
-				comboBoxFilme.Items.Clear();
+				comboBoxFilme.DataSource = filmes;
 				comboBoxFilme.DisplayMember = "Nome";
 
-				foreach (var filme in filmes)
-				{
-					comboBoxFilme.Items.Add(filme);
-				}
-
-				comboBoxSala.Items.Clear();
+				comboBoxSala.DataSource = salas;
 				comboBoxSala.DisplayMember = "Nome";
-
-				foreach (var sala in salas)
-				{
-					comboBoxSala.Items.Add(sala);
-				}
 			}
 		}
 

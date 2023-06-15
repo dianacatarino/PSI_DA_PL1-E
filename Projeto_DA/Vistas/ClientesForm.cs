@@ -16,8 +16,9 @@ namespace Projeto_DA
 {
     public partial class ClientesForm : Form
     {
-		private Projeto_DA.Modelos.ApplicationContext db;
+		public string NomeFuncionario { get; private set; }
 		private string nomeFuncionario;
+		private Projeto_DA.Modelos.ApplicationContext db;
 
 		public ClientesForm(string nomeFuncionario)
         {
@@ -30,10 +31,10 @@ namespace Projeto_DA
 
         private void voltarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MenuForm menuForm = new MenuForm();
-            Hide();
-            menuForm.ShowDialog();
-        }
+			MenuForm menuForm = new MenuForm(nomeFuncionario);
+			Hide();
+			menuForm.ShowDialog();
+		}
 
         private void btAdicionarCliente_Click(object sender, EventArgs e)
         {
