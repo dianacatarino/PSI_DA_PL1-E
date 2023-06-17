@@ -17,6 +17,7 @@ namespace Projeto_DA
 	public partial class MenuForm : Form
 	{
 		private string funcionarioAutenticado;
+		private Sessao sessaoSelecionada;
 
 		public MenuForm(string nomeFuncionario)
 		{
@@ -81,16 +82,31 @@ namespace Projeto_DA
 			listBoxSessoesAtuais.DisplayMember = "ToString";
 		}
 
-		private void listBoxSessoesAtuais_Click(object sender, EventArgs e)
+		
+
+		private void btCriarBilhete_Click(object sender, EventArgs e)
 		{
-			/*if (listBoxSessoesAtuais.SelectedItem != null)
+			if (sessaoSelecionada != null)
 			{
-				Sessao sessaoSelecionada = (Sessao)listBoxSessoesAtuais.SelectedItem;
-				AtendimentoForm atendimentoForm = new AtendimentoForm(funcionarioAutenticado, sessaoSelecionada);
+				Sala salaDaSessao = sessaoSelecionada.Sala; // Obtenha a Sala da Sessão selecionada
+
+				AtendimentoForm atendimentoForm = new AtendimentoForm(funcionarioAutenticado, sessaoSelecionada, salaDaSessao);
 				Hide();
 				atendimentoForm.ShowDialog();
 				Show();
-			}*/
+			}
+			else
+			{
+				MessageBox.Show("Selecione uma sessão para criar um bilhete.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			}
+		}
+
+		private void listBoxSessoesAtuais_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (listBoxSessoesAtuais.SelectedItem != null)
+			{
+				sessaoSelecionada = (Sessao)listBoxSessoesAtuais.SelectedItem;
+			}
 		}
 	}
 }

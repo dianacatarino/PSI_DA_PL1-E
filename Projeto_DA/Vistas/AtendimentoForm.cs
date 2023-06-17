@@ -18,15 +18,19 @@ namespace Projeto_DA
     {
 		public string NomeFuncionario { get; private set; }
 		private string nomeFuncionario;
-		public string Sessao;
+		private Sessao sessaoSelecionada;
+		public Sala Sala { get; private set; }
 		private Projeto_DA.Modelos.ApplicationContext db;
 		
-		public AtendimentoForm(string nomeFuncionario)
+		public AtendimentoForm(string nomeFuncionario, Sessao sessao, Sala salaDaSessao)
         {
             InitializeComponent();
 			this.nomeFuncionario = nomeFuncionario;
+			this.sessaoSelecionada = sessao;
 			menuToolStripMenuItem.Text = nomeFuncionario;
 			db = new Projeto_DA.Modelos.ApplicationContext();
+			Sala = salaDaSessao;
+			textBoxSala.Text = Sala.Nome;
 		}
 
 		private void voltarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -66,7 +70,7 @@ namespace Projeto_DA
 
 		private void buttonCarregarSala_Click(object sender, EventArgs e)
 		{
-			string nomeSala = comboBoxSalas.Text;
+			string nomeSala = textBoxSala.Text;
 
 			Sala sala = SalaController.GetSala(nomeSala);
 
@@ -174,33 +178,40 @@ namespace Projeto_DA
 		private void AtendimentoForm_Load(object sender, EventArgs e)
 		{
 			menuToolStripMenuItem.Text = nomeFuncionario;
-
-			if (comboBoxSalas.Items.Count == 0)
-			{
-				var salas = SalaController.GetSalas();
-
-				comboBoxSalas.Items.Clear();
-				comboBoxSalas.DisplayMember = "Nome";
-
-				foreach (var sala in salas)
-				{
-					if (!comboBoxSalas.Items.Contains(sala))
-					{
-						comboBoxSalas.Items.Add(sala);
-					}
-				}
-			}
 		}
 
 		private void btCriarBilheteCliente_Click(object sender, EventArgs e)
 		{
-			if (listBoxClientes.SelectedItem == null)
-			{
-				MessageBox.Show("Selecione um cliente válido.");
-				return;
-			}
+			Cliente cliente = null;
 
-			Cliente cliente = (Cliente)listBoxClientes.SelectedItem;
+			if (listBoxClientes.SelectedItem != null)
+			{
+				cliente = (Cliente)listBoxClientes.SelectedItem;
+			}
+			else
+			{
+				string nomeCliente = textBoxNome.Text;
+
+				// Verificar se o nome do cliente foi fornecido
+				if (string.IsNullOrEmpty(nomeCliente))
+				{
+					MessageBox.Show("Digite o nome do cliente.");
+					return;
+				}
+
+				string moradaCliente = textBoxMorada.Text;
+				int nifCliente;
+
+				// Verificar se o NIF é um número válido
+				if (!int.TryParse(textBoxNif.Text, out nifCliente))
+				{
+					MessageBox.Show("Digite um número válido para o NIF.");
+					return;
+				}
+
+				// Não adicionar o cliente anônimo à base de dados
+				cliente = new Cliente();
+			}
 
 			// Verificar se um lugar está selecionado no DataGridView
 			if (dataGridViewLugares.SelectedCells.Count == 0)
@@ -215,7 +226,7 @@ namespace Projeto_DA
 			int fila = selectedCell.RowIndex + 1;
 
 			// Verificar se o lugar está disponível
-			Sala sala = SalaController.GetSala(comboBoxSalas.Text);
+			Sala sala = SalaController.GetSala(textBoxSala.Text);
 			bool lugarDisponivel = VerificarLugarDisponivel(sala, coluna, fila);
 			if (!lugarDisponivel)
 			{
@@ -224,10 +235,10 @@ namespace Projeto_DA
 			}
 
 			// Criar o bilhete com as informações
-			string lugar = $"Fila {fila}, Coluna {coluna}";
+			string lugar = coluna + "-" + fila;
 			string estado = "Ativo";
-			//Funcionario funcionario = funcionarioAutenticado;
-			/*Sessao sessao = ObterSessao(); // Implemente a função ObterSessao() para obter a sessão correta
+			Funcionario funcionario = FuncionarioController.GetFuncionario(nomeFuncionario);
+			Sessao sessao = sessaoSelecionada;
 
 			// Adicionar o bilhete utilizando o BilheteController
 			BilheteController.AdicionarBilhete(lugar, estado, cliente, funcionario, sessao);
@@ -235,17 +246,14 @@ namespace Projeto_DA
 			MessageBox.Show("Bilhete criado com sucesso.");
 
 			// Atualizar a exibição da sala
-			ExibirSala(sala);*/
+			ExibirSala(sala);
+
+			// Exportar bilhetes com base nos dados utilizados
+			ExportarBilhete(cliente, funcionario, sessao);
 		}
 
-		private void ExportarBilhete()
+		private void ExportarBilhete(Cliente cliente, Funcionario funcionario, Sessao sessao)
 		{
-			/*if (listBoxClientes.SelectedItem == null)
-			{
-				return;
-			}
-
-			Cliente cliente = (Cliente)listBoxClientes.SelectedItem;
 			string nomeFicheiro = cliente.Nome + "_" + cliente.NumFiscal + ".txt";
 
 			using (StreamWriter sw = new StreamWriter(nomeFicheiro))
@@ -254,36 +262,29 @@ namespace Projeto_DA
 				sw.WriteLine("____________________________________________________________________");
 				sw.WriteLine();
 
-				foreach (Compra compra in cliente.Compras)
+				foreach (Bilhete bilhete in cliente.Bilhetes)
 				{
-					sw.WriteLine("Data e Hora da Compra: " + compra.GetDataHora().ToString("dd/MMMM/yyyy HH:mm:ss"));
-					sw.WriteLine("Filme: " + compra.Sessao.Filme.Nome);
-					sw.WriteLine("Data e Hora da Sessão: " + compra.Sessao.DataHoraInicio.ToString("dd/MMMM/yyyy HH:mm:ss"));
-					sw.WriteLine("Sala: " + compra.Sessao.Sala.Nome);
-					sw.WriteLine("Lugares:");
+					sw.WriteLine("Data e Hora da Compra: " + DateTime.Now.ToString("dd/MMMM/yyyy HH:mm:ss"));
+					sw.WriteLine("Filme: " + bilhete.Sessao.Filme.Nome);
+					sw.WriteLine("Data e Hora da Sessão: " + bilhete.Sessao.DataHora.ToString("dd/MMMM/yyyy HH:mm:ss"));
+					sw.WriteLine("Sala: " + bilhete.Sessao.Sala.Nome);
+					sw.WriteLine("Preço: " + bilhete.Sessao.Preco + "€");
+					sw.WriteLine("Lugar: " + bilhete.Lugar);
 
-					foreach (Lugar lugar in compra.Lugares)
-					{
-						sw.WriteLine("- Fila " + lugar.Fila + ", Coluna " + lugar.Coluna);
-					}
-
-					sw.WriteLine("Atendido por: " + FuncionarioAutenticado.Nome); // Certifique-se de que FuncionarioAutenticado é válido
+					sw.WriteLine("Atendido por: " + funcionario.Nome);
 
 					sw.WriteLine("____________________________________________________________________");
 					sw.WriteLine();
 				}
 
-				sw.WriteLine("Total do Cliente: €" + cliente.Total);
+				int numBilhetes = cliente.Bilhetes.Count;
+				float valorBilhetes = cliente.Bilhetes.Sum(bilhete => bilhete.Sessao.Preco);
+				sw.WriteLine("Nº de Bilhetes: " + numBilhetes);
+				sw.WriteLine("Valor Bilhetes Adquiridos: €" + valorBilhetes);
+				sw.WriteLine();
 			}
 
 			MessageBox.Show("Bilhetes exportados com sucesso.");
-			*/
-		}
-
-
-		private void dataGridViewLugares_CellContentClick(object sender, DataGridViewCellEventArgs e)
-		{
-
 		}
 	}
 }

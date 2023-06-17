@@ -19,7 +19,7 @@ namespace Projeto_DA.Modelos
 
         public override string ToString()
         {
-            return $"{Nome}, {Colunas}, {Filas}";
+            return $"Sala {Id}: {Nome}, {Colunas}, {Filas}";
         }
     }
 }

@@ -41,8 +41,10 @@ namespace Projeto_DA.Controladores
         {
             using (var db = new ApplicationContext())
             {
-                return db.Sessoes.ToList();
-            }
+				return db.Sessoes.Include("Filme")
+						 .Include("Sala")
+						 .ToList();
+			}
         }
 
         public static List<Sessao> GetSessoesAtuais()
@@ -60,6 +62,14 @@ namespace Projeto_DA.Controladores
 			}
 
 			return sessoesAtuais;
+		}
+
+		public static Sessao GetSessao(int sessao)
+		{
+			using (var db = new ApplicationContext())
+			{
+				return db.Sessoes.FirstOrDefault(s => s.Id == sessao);
+			}
 		}
 
 		public static void AlterarSessao(int sessaoId, Filme novoFilme, Sala novaSala,DateTime novaDataHora, float novoPreco)

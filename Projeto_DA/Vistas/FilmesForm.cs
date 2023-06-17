@@ -54,7 +54,6 @@ namespace Projeto_DA
 			var filmes = FilmeController.GetFilmes();
 			listBoxFilmes.DataSource = null;
 			listBoxFilmes.DataSource = filmes;
-			listBoxFilmes.DisplayMember = "Categoria.Nome";
 		}
 
         private void listBoxFilmes_SelectedIndexChanged(object sender, EventArgs e)

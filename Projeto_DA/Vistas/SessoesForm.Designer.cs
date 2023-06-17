@@ -79,9 +79,9 @@ namespace Projeto_DA
 			// 
 			this.listBoxSessoes.FormattingEnabled = true;
 			this.listBoxSessoes.ItemHeight = 16;
-			this.listBoxSessoes.Location = new System.Drawing.Point(108, 61);
+			this.listBoxSessoes.Location = new System.Drawing.Point(100, 61);
 			this.listBoxSessoes.Name = "listBoxSessoes";
-			this.listBoxSessoes.Size = new System.Drawing.Size(330, 308);
+			this.listBoxSessoes.Size = new System.Drawing.Size(350, 308);
 			this.listBoxSessoes.TabIndex = 19;
 			this.listBoxSessoes.SelectedIndexChanged += new System.EventHandler(this.listBoxSessoes_SelectedIndexChanged);
 			// 

@@ -38,6 +38,7 @@
 			this.funcionarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.alterarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.listBoxSessoesAtuais = new System.Windows.Forms.ListBox();
+			this.btCriarBilhete = new System.Windows.Forms.Button();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -130,16 +131,28 @@
 			// 
 			this.listBoxSessoesAtuais.FormattingEnabled = true;
 			this.listBoxSessoesAtuais.ItemHeight = 16;
-			this.listBoxSessoesAtuais.Location = new System.Drawing.Point(200, 106);
+			this.listBoxSessoesAtuais.Location = new System.Drawing.Point(200, 74);
 			this.listBoxSessoesAtuais.Name = "listBoxSessoesAtuais";
-			this.listBoxSessoesAtuais.Size = new System.Drawing.Size(321, 228);
+			this.listBoxSessoesAtuais.Size = new System.Drawing.Size(344, 260);
 			this.listBoxSessoesAtuais.TabIndex = 8;
+			this.listBoxSessoesAtuais.SelectedIndexChanged += new System.EventHandler(this.listBoxSessoesAtuais_SelectedIndexChanged);
+			// 
+			// btCriarBilhete
+			// 
+			this.btCriarBilhete.Location = new System.Drawing.Point(318, 349);
+			this.btCriarBilhete.Name = "btCriarBilhete";
+			this.btCriarBilhete.Size = new System.Drawing.Size(120, 23);
+			this.btCriarBilhete.TabIndex = 9;
+			this.btCriarBilhete.Text = "Criar Bilhete";
+			this.btCriarBilhete.UseVisualStyleBackColor = true;
+			this.btCriarBilhete.Click += new System.EventHandler(this.btCriarBilhete_Click);
 			// 
 			// MenuForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.btCriarBilhete);
 			this.Controls.Add(this.listBoxSessoesAtuais);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.btFuncionarios);
@@ -171,6 +184,7 @@
         private System.Windows.Forms.ToolStripMenuItem funcionarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem alterarToolStripMenuItem;
 		private System.Windows.Forms.ListBox listBoxSessoesAtuais;
+		private System.Windows.Forms.Button btCriarBilhete;
 	}
 }
 

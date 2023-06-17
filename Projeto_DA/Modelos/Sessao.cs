@@ -17,7 +17,10 @@ namespace Projeto_DA.Modelos
 
         public override string ToString()
         {
-            return $"{Id},{DataHora}, {Preco}";
-        }
+			string filmeNome = Filme != null ? Filme.Nome : "N/A";
+			string salaNome = Sala != null ? Sala.Nome : "N/A";
+
+			return $"Sessão {Id}: {filmeNome} - {salaNome} ({DataHora}) {Preco}€";
+		}
     }
 }

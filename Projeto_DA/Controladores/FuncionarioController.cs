@@ -27,7 +27,15 @@ namespace Projeto_DA.Controladores
             }
         }
 
-        public static void AlterarFuncionario(int funcionarioId, string novoNome, string novaMorada, float novoSalario, string novaFuncao)
+		public static Funcionario GetFuncionario(string nomeFuncionario)
+		{
+			using (var db = new ApplicationContext())
+			{
+				return db.Funcionarios.FirstOrDefault(f => f.Nome == nomeFuncionario);
+			}
+		}
+
+		public static void AlterarFuncionario(int funcionarioId, string novoNome, string novaMorada, float novoSalario, string novaFuncao)
         {
 			using (var db = new ApplicationContext())
             {

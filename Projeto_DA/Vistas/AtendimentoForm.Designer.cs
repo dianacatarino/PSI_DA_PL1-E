@@ -41,12 +41,12 @@
 			this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.voltarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.listBoxClientes = new System.Windows.Forms.ListBox();
-			this.comboBoxSalas = new System.Windows.Forms.ComboBox();
 			this.label5 = new System.Windows.Forms.Label();
 			this.dataGridViewLugares = new System.Windows.Forms.DataGridView();
 			this.Linhas = new System.Windows.Forms.DataGridViewImageColumn();
 			this.Colunas = new System.Windows.Forms.DataGridViewImageColumn();
 			this.buttonCarregarSala = new System.Windows.Forms.Button();
+			this.textBoxSala = new System.Windows.Forms.TextBox();
 			this.menuStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewLugares)).BeginInit();
 			this.SuspendLayout();
@@ -150,7 +150,7 @@
 			// voltarToolStripMenuItem
 			// 
 			this.voltarToolStripMenuItem.Name = "voltarToolStripMenuItem";
-			this.voltarToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+			this.voltarToolStripMenuItem.Size = new System.Drawing.Size(131, 26);
 			this.voltarToolStripMenuItem.Text = "Voltar";
 			this.voltarToolStripMenuItem.Click += new System.EventHandler(this.voltarToolStripMenuItem_Click);
 			// 
@@ -163,14 +163,6 @@
 			this.listBoxClientes.Size = new System.Drawing.Size(242, 164);
 			this.listBoxClientes.TabIndex = 41;
 			this.listBoxClientes.SelectedIndexChanged += new System.EventHandler(this.listBoxClientes_SelectedIndexChanged);
-			// 
-			// comboBoxSalas
-			// 
-			this.comboBoxSalas.FormattingEnabled = true;
-			this.comboBoxSalas.Location = new System.Drawing.Point(446, 31);
-			this.comboBoxSalas.Name = "comboBoxSalas";
-			this.comboBoxSalas.Size = new System.Drawing.Size(169, 24);
-			this.comboBoxSalas.TabIndex = 42;
 			// 
 			// label5
 			// 
@@ -193,7 +185,6 @@
 			this.dataGridViewLugares.RowTemplate.Height = 24;
 			this.dataGridViewLugares.Size = new System.Drawing.Size(453, 354);
 			this.dataGridViewLugares.TabIndex = 44;
-			this.dataGridViewLugares.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewLugares_CellContentClick);
 			// 
 			// Linhas
 			// 
@@ -213,7 +204,7 @@
 			// 
 			// buttonCarregarSala
 			// 
-			this.buttonCarregarSala.Location = new System.Drawing.Point(621, 31);
+			this.buttonCarregarSala.Location = new System.Drawing.Point(618, 30);
 			this.buttonCarregarSala.Name = "buttonCarregarSala";
 			this.buttonCarregarSala.Size = new System.Drawing.Size(125, 24);
 			this.buttonCarregarSala.TabIndex = 45;
@@ -221,15 +212,22 @@
 			this.buttonCarregarSala.UseVisualStyleBackColor = true;
 			this.buttonCarregarSala.Click += new System.EventHandler(this.buttonCarregarSala_Click);
 			// 
+			// textBoxSala
+			// 
+			this.textBoxSala.Location = new System.Drawing.Point(446, 31);
+			this.textBoxSala.Name = "textBoxSala";
+			this.textBoxSala.Size = new System.Drawing.Size(166, 22);
+			this.textBoxSala.TabIndex = 46;
+			// 
 			// AtendimentoForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 504);
+			this.Controls.Add(this.textBoxSala);
 			this.Controls.Add(this.buttonCarregarSala);
 			this.Controls.Add(this.dataGridViewLugares);
 			this.Controls.Add(this.label5);
-			this.Controls.Add(this.comboBoxSalas);
 			this.Controls.Add(this.listBoxClientes);
 			this.Controls.Add(this.label4);
 			this.Controls.Add(this.btCarregarCliente);
@@ -268,11 +266,11 @@
         private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem voltarToolStripMenuItem;
 		private System.Windows.Forms.ListBox listBoxClientes;
-		private System.Windows.Forms.ComboBox comboBoxSalas;
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.DataGridView dataGridViewLugares;
 		private System.Windows.Forms.Button buttonCarregarSala;
 		private System.Windows.Forms.DataGridViewImageColumn Linhas;
 		private System.Windows.Forms.DataGridViewImageColumn Colunas;
+		private System.Windows.Forms.TextBox textBoxSala;
 	}
 }

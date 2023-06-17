@@ -31,11 +31,11 @@ namespace Projeto_DA.Controladores
 
         public static List<Filme> GetFilmes()
         {
-            using (var db = new ApplicationContext())
-            {
-                return db.Filmes.ToList();
-            }
-        }
+			using (var db = new ApplicationContext())
+			{
+				return db.Filmes.Include("Categoria").ToList();
+			}
+		}
 
 		public static Filme GetFilme(string filme)
 		{
