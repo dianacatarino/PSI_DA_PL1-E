@@ -27,7 +27,16 @@ namespace Projeto_DA.Controladores
             }
         }
 
-        public static void AlterarCliente(int clienteId, string novoNome, string novaMorada, int novoNif)
+		public static Cliente GetCliente(string cliente)
+		{
+			using (var db = new ApplicationContext())
+			{
+				return db.Clientes.Include("Bilhetes")
+					.FirstOrDefault(c => c.Nome == cliente);
+			}
+		}
+
+		public static void AlterarCliente(int clienteId, string novoNome, string novaMorada, int novoNif)
         {
             using (var db = new ApplicationContext())
             {
@@ -46,10 +55,15 @@ namespace Projeto_DA.Controladores
 		{
 			using (var db = new ApplicationContext())
 			{
-				var cliente = db.Clientes.Find(clienteId);
+				var cliente = db.Clientes.Include("Bilhetes").SingleOrDefault(c => c.Id == clienteId);
 				if (cliente != null)
 				{
+					// Remover os bilhetes associados ao cliente
+					db.Bilhetes.RemoveRange(cliente.Bilhetes);
+
+					// Remover o cliente
 					db.Clientes.Remove(cliente);
+
 					db.SaveChanges();
 				}
 			}

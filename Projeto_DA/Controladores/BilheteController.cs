@@ -46,12 +46,14 @@ namespace Projeto_DA.Controladores
             }
         }
 
-        public static List<Bilhete> GetBilhetes()
-        {
-            using (var db = new ApplicationContext())
-            {
-                return db.Bilhetes.ToList();
-            }
-        }
-    }
+		public static List<Bilhete> GetBilhetes(string lugar, Sala salaDaSessao)
+		{
+			using (var db = new ApplicationContext())
+			{
+				return db.Bilhetes.Include("Sessao")
+								  .Where(b => b.Lugar == lugar && b.Sessao.Sala.Id == salaDaSessao.Id)
+								  .ToList();
+			}
+		}
+	}
 }

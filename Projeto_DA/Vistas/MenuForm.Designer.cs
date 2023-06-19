@@ -164,6 +164,7 @@
 			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "MenuForm";
 			this.Text = "CineGest";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MenuForm_FormClosing);
 			this.Load += new System.EventHandler(this.MenuForm_Load);
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();

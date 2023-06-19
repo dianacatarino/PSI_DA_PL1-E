@@ -68,7 +68,7 @@
 			this.comboBoxFuncionario.FormattingEnabled = true;
 			this.comboBoxFuncionario.Location = new System.Drawing.Point(151, 81);
 			this.comboBoxFuncionario.Name = "comboBoxFuncionario";
-			this.comboBoxFuncionario.Size = new System.Drawing.Size(150, 24);
+			this.comboBoxFuncionario.Size = new System.Drawing.Size(178, 24);
 			this.comboBoxFuncionario.TabIndex = 6;
 			// 
 			// menuStrip1

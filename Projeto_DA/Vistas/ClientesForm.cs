@@ -62,7 +62,14 @@ namespace Projeto_DA
             textBoxMorada.Text = cliente.Morada;
             int NumFiscal = cliente.NumFiscal;
             textBoxNif.Text = NumFiscal.ToString();
-        }
+
+			int numBilhetes;
+			float valorBilhetes;
+			string informacoesBilhetes = cliente.ObterInformacoesBilhetes(out numBilhetes, out valorBilhetes);
+
+			textBoxNBilhetes.Text = numBilhetes.ToString();
+			textBoxValorBilhetes.Text = valorBilhetes.ToString();
+		}
 
         private void btAlterarCliente_Click(object sender, EventArgs e)
         {

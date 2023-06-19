@@ -18,15 +18,15 @@ namespace Projeto_DA
 		private string nomeFuncionario;
 		private Projeto_DA.Modelos.ApplicationContext db;
 		public SessoesForm(string nomeFuncionario)
-        {
-            InitializeComponent();
+		{
+			InitializeComponent();
 			this.nomeFuncionario = nomeFuncionario;
 			menuToolStripMenuItem.Text = nomeFuncionario;
 			db = new Projeto_DA.Modelos.ApplicationContext();
 			SessoesRefresh();
 		}
 
-        private void voltarToolStripMenuItem_Click(object sender, EventArgs e)
+		private void voltarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MenuForm menuForm = new MenuForm(nomeFuncionario);
             Hide();

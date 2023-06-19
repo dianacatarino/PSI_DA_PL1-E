@@ -10,7 +10,7 @@ namespace Projeto_DA.Controladores
 {
     internal class CinemaController
     {
-        public static void AdicionarCinema(string nome, string email, string morada)
+        public static void AdicionarCinema(string nome, string morada, string email)
         {
             using(var db = new ApplicationContext())
             {
@@ -20,7 +20,7 @@ namespace Projeto_DA.Controladores
             }
         }
 
-        public static List<Cinema> GetCinemas()
+        public static List<Cinema> GetCinema()
         {
             using (var db = new ApplicationContext())
             {

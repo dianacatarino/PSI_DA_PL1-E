@@ -37,13 +37,22 @@ namespace Projeto_DA
 
         private void btAdicionarCinema_Click(object sender, EventArgs e)
         {
-            CinemaController.AdicionarCinema(textBoxNomeCinema.Text,textBoxMoradaCinema.Text,textBoxEmailCinema.Text);
+			string nomeCinema = textBoxNomeCinema.Text;
+
+			// Verificar se já existe um cinema cadastrado
+			var cinema = CinemaController.GetCinema();
+			if (cinema.Count > 0)
+			{
+				MessageBox.Show("Só é permitido adicionar um único cinema.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return;
+			}
+			CinemaController.AdicionarCinema(textBoxNomeCinema.Text,textBoxMoradaCinema.Text,textBoxEmailCinema.Text);
             CinemaRefresh();
         }
 
         private void CinemaRefresh()
         {
-            var cinema = CinemaController.GetCinemas();
+            var cinema = CinemaController.GetCinema();
             listBoxCinema.DataSource = null;
             listBoxCinema.DataSource = cinema;
         }

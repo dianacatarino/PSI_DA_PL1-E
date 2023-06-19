@@ -104,7 +104,7 @@ namespace Projeto_DA
 
 				for (int i = 1; i <= colunas; i++)
 				{
-					bool lugarDisponivel = VerificarLugarDisponivel(sala, i, j);
+					bool lugarDisponivel = VerificarLugarDisponivel(sala, sessaoSelecionada, i, j);
 					Image imagem = GerarImagem(lugarDisponivel);
 					DataGridViewImageCell cell = new DataGridViewImageCell();
 					cell.Value = imagem;
@@ -119,11 +119,11 @@ namespace Projeto_DA
 
 			if (lugarDisponivel)
 			{
-				caminhoImagem = "E:\\PSI\\2º Semestre\\DA\\Projeto\\Projeto_DA\\img\\greeniconcinema.png";
+				caminhoImagem = "E:\\PSI\\2º Semestre\\DA\\Projeto\\Projeto_DA\\Projeto_DA\\Imagens\\greeniconcinema.png";
 			}
 			else
 			{
-				caminhoImagem = "E:\\PSI\\2º Semestre\\DA\\Projeto\\Projeto_DA\\img\\greyiconcinema.png";
+				caminhoImagem = "E:\\PSI\\2º Semestre\\DA\\Projeto\\Projeto_DA\\Projeto_DA\\Imagens\\greyiconcinema.png";
 			}
 
 			Bitmap imagemOriginal = new Bitmap(caminhoImagem);
@@ -140,37 +140,28 @@ namespace Projeto_DA
 			return imagemRedimensionada;
 		}
 
-		private bool VerificarLugarDisponivel(Sala sala, int coluna, int fila)
+		private bool VerificarLugarDisponivel(Sala sala, Sessao sessao, int coluna, int fila)
 		{
 			// Verificar se as coordenadas estão dentro dos limites da sala
 			if (coluna >= 1 && coluna <= sala.Colunas && fila >= 1 && fila <= sala.Filas)
 			{
-				// Obter a célula correspondente no DataGridView
-				DataGridViewCell cell = dataGridViewLugares[coluna - 1, fila - 1];
+				string lugar = coluna + "-" + fila;
+				List<Bilhete> bilhetes = BilheteController.GetBilhetes(lugar, sessao.Sala);
 
-				// Obter a imagem atual na célula
-				Image imagemAtual = (Image)cell.Value;
-
-				// Verificar se a imagem é cinza (ocupado)
-				if (imagemAtual == ImagemOcupado())
+				if (bilhetes != null && bilhetes.Any(b => b.Estado == "Ativo" && b.Sessao.Id == sessao.Id))
 				{
-					// Lugar está ocupado
+					// Pelo menos um bilhete ativo para o lugar na sala da sessão específica
 					return false;
-				}
-				else
-				{
-					// Lugar está disponível
-					return true;
 				}
 			}
 
-			// As coordenadas estão fora dos limites da sala, considerar como lugar indisponível
-			return false;
+			// As coordenadas estão fora dos limites da sala ou não há bilhetes ativos para o lugar na sala da sessão específica
+			return true;
 		}
 
 		private Image ImagemOcupado()
 		{
-			string caminhoImagemCinza = "E:\\PSI\\2º Semestre\\DA\\Projeto\\Projeto_DA\\img\\greyiconcinema.png";
+			string caminhoImagemCinza = "E:\\PSI\\2º Semestre\\DA\\Projeto\\Projeto_DA\\Projeto_DA\\Imagens\\greyiconcinema.png";
 			Image imagemCinza = Image.FromFile(caminhoImagemCinza);
 			return imagemCinza;
 		}
@@ -227,7 +218,7 @@ namespace Projeto_DA
 
 			// Verificar se o lugar está disponível
 			Sala sala = SalaController.GetSala(textBoxSala.Text);
-			bool lugarDisponivel = VerificarLugarDisponivel(sala, coluna, fila);
+			bool lugarDisponivel = VerificarLugarDisponivel(sala, sessaoSelecionada, coluna, fila);
 			if (!lugarDisponivel)
 			{
 				MessageBox.Show("O lugar selecionado está ocupado.");
@@ -248,12 +239,9 @@ namespace Projeto_DA
 			// Atualizar a exibição da sala
 			ExibirSala(sala);
 
-			// Exportar bilhetes com base nos dados utilizados
-			ExportarBilhete(cliente, funcionario, sessao);
-		}
+			// Recarregar o objeto cliente da base de dados
+			cliente = ClienteController.GetCliente(cliente.Nome);
 
-		private void ExportarBilhete(Cliente cliente, Funcionario funcionario, Sessao sessao)
-		{
 			string nomeFicheiro = cliente.Nome + "_" + cliente.NumFiscal + ".txt";
 
 			using (StreamWriter sw = new StreamWriter(nomeFicheiro))
@@ -262,29 +250,33 @@ namespace Projeto_DA
 				sw.WriteLine("____________________________________________________________________");
 				sw.WriteLine();
 
-				foreach (Bilhete bilhete in cliente.Bilhetes)
+				foreach (Bilhete b in cliente.Bilhetes)
 				{
+					// Obter a sessão completa com todas as informações
+					Sessao sessaoBilhete = sessaoSelecionada;
+
 					sw.WriteLine("Data e Hora da Compra: " + DateTime.Now.ToString("dd/MMMM/yyyy HH:mm:ss"));
-					sw.WriteLine("Filme: " + bilhete.Sessao.Filme.Nome);
-					sw.WriteLine("Data e Hora da Sessão: " + bilhete.Sessao.DataHora.ToString("dd/MMMM/yyyy HH:mm:ss"));
-					sw.WriteLine("Sala: " + bilhete.Sessao.Sala.Nome);
-					sw.WriteLine("Preço: " + bilhete.Sessao.Preco + "€");
-					sw.WriteLine("Lugar: " + bilhete.Lugar);
-
+					sw.WriteLine("Filme: " + sessaoBilhete.Filme.Nome);
+					sw.WriteLine("Data e Hora da Sessão: " + sessaoBilhete.DataHora.ToString("dd/MMMM/yyyy HH:mm:ss"));
+					sw.WriteLine("Sala: " + sessaoBilhete.Sala.Nome);
+					sw.WriteLine("Preço: " + sessaoBilhete.Preco + "€");
+					sw.WriteLine("Lugar: " + b.Lugar);
 					sw.WriteLine("Atendido por: " + funcionario.Nome);
-
 					sw.WriteLine("____________________________________________________________________");
 					sw.WriteLine();
 				}
 
 				int numBilhetes = cliente.Bilhetes.Count;
-				float valorBilhetes = cliente.Bilhetes.Sum(bilhete => bilhete.Sessao.Preco);
+				float valorBilhetes = cliente.Bilhetes.Sum(b => sessaoSelecionada.Preco);
 				sw.WriteLine("Nº de Bilhetes: " + numBilhetes);
-				sw.WriteLine("Valor Bilhetes Adquiridos: €" + valorBilhetes);
+				sw.WriteLine("Valor Bilhetes Adquiridos:" + valorBilhetes + "€");
 				sw.WriteLine();
 			}
 
 			MessageBox.Show("Bilhetes exportados com sucesso.");
+
+			// Atualizar a exibição da sala
+			ExibirSala(sala);
 		}
 	}
 }

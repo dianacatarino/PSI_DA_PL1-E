@@ -64,11 +64,17 @@ namespace Projeto_DA.Controladores
 			return sessoesAtuais;
 		}
 
-		public static Sessao GetSessao(int sessao)
+		public static Sessao GetSessao(string nomeFilme, DateTime dataHora, string nomeSala, float preco)
 		{
 			using (var db = new ApplicationContext())
 			{
-				return db.Sessoes.FirstOrDefault(s => s.Id == sessao);
+				return db.Sessoes.Include("Bilhetes")
+					.Include("Filme")
+					.Include("Sala")
+					.FirstOrDefault(s => s.Filme.Nome == nomeFilme &&
+										s.DataHora == dataHora &&
+										 s.Sala.Nome == nomeSala &&
+										 s.Preco == preco);
 			}
 		}
 
